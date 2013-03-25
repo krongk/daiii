@@ -1,6 +1,10 @@
 #encoding :utf-8
 ---
 zh-CN:
+  simple_form:
+    labels:
+      site_cate:
+        name: '名称'
   site_cates:
     index:
       title: 网站分类

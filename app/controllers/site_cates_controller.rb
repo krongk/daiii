@@ -4,7 +4,7 @@ class SiteCatesController < ApplicationController
   # GET /site_cates
   # GET /site_cates.json
   def index
-    @site_cates = SiteCate.all
+    @site_cates = current_user.site_cates
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,7 +62,7 @@ class SiteCatesController < ApplicationController
 
     respond_to do |format|
       if @site_cate.update_attributes(params[:site_cate])
-        format.html { redirect_to @site_cate, notice: 'Site cate was successfully updated.' }
+        format.html { redirect_to @site_cate, notice: '更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

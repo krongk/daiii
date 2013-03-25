@@ -9,7 +9,7 @@
 		<h2><%= site_cate.name %></h2>
 		<ul>
 			<% site_cate.site_items.each do |item| %>
-				<li><%= item.site_title %></li>
+				<li><%= item.site_title %> [<%=link_to item.site_url, item.site_url%>]</li>
 			<% end %>
 		</ul>
 	<% end %>

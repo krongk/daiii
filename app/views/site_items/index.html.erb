@@ -1,8 +1,7 @@
-<h1>Listing site_items</h1>
+<h1>网站列表</h1>
 
-<table>
+<table border='1'>
   <tr>
-    <th>Site cate</th>
     <th>Site url</th>
     <th>Site title</th>
     <th>Site username</th>
@@ -18,7 +17,6 @@
 
 <% @site_items.each do |site_item| %>
   <tr>
-    <td><%= site_item.site_cate %></td>
     <td><%= site_item.site_url %></td>
     <td><%= site_item.site_title %></td>
     <td><%= site_item.site_username %></td>
@@ -36,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New Site item', new_site_item_path %>
+<%= link_to '添加', new_site_item_path %>
