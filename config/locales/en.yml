@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      user:
+        create: "Add非凡 %{model}"
+        update: "Save Changes"

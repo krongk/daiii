@@ -1,0 +1,19 @@
+<%= simple_form_for(@site_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :site_cate, :selected => params[:new_site_cate_id] %>
+    <%= f.input :site_url %>
+    <%= f.input :site_title %>
+    <%= f.input :site_username %>
+    <%= f.input :site_password %>
+    <%= f.input :site_password_tips %>
+    <%= f.input :note %>
+    <%= f.input :visit_count %>
+    <%= f.input :rate_count %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

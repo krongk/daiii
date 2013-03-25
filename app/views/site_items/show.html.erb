@@ -1,0 +1,48 @@
+<p>
+  <b>Site cate:</b>
+  <%= @site_item.site_cate %>
+</p>
+
+<p>
+  <b>Site url:</b>
+  <%= @site_item.site_url %>
+</p>
+
+<p>
+  <b>Site title:</b>
+  <%= @site_item.site_title %>
+</p>
+
+<p>
+  <b>Site username:</b>
+  <%= @site_item.site_username %>
+</p>
+
+<p>
+  <b>Site password:</b>
+  <%= @site_item.site_password %>
+</p>
+
+<p>
+  <b>Site password tips:</b>
+  <%= @site_item.site_password_tips %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @site_item.note %>
+</p>
+
+<p>
+  <b>Visit count:</b>
+  <%= @site_item.visit_count %>
+</p>
+
+<p>
+  <b>Rate count:</b>
+  <%= @site_item.rate_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_item_path(@site_item) %> |
+<%= link_to 'Back', site_items_path %>

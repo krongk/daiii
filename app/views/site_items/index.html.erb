@@ -1,0 +1,39 @@
+<h1>Listing site_items</h1>
+
+<table>
+  <tr>
+    <th>Site cate</th>
+    <th>Site url</th>
+    <th>Site title</th>
+    <th>Site username</th>
+    <th>Site password</th>
+    <th>Site password tips</th>
+    <th>Note</th>
+    <th>Visit count</th>
+    <th>Rate count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_items.each do |site_item| %>
+  <tr>
+    <td><%= site_item.site_cate %></td>
+    <td><%= site_item.site_url %></td>
+    <td><%= site_item.site_title %></td>
+    <td><%= site_item.site_username %></td>
+    <td><%= site_item.site_password %></td>
+    <td><%= site_item.site_password_tips %></td>
+    <td><%= site_item.note %></td>
+    <td><%= site_item.visit_count %></td>
+    <td><%= site_item.rate_count %></td>
+    <td><%= link_to 'Show', site_item %></td>
+    <td><%= link_to 'Edit', edit_site_item_path(site_item) %></td>
+    <td><%= link_to 'Destroy', site_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site item', new_site_item_path %>

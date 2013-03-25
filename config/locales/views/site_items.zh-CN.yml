@@ -1,0 +1,29 @@
+---
+zh-CN:
+  site_items:
+    index:
+      title: 网站标题
+    show:
+      title: 网站
+    edit:
+      title: 编辑网站
+    new:
+      title: 新建网站
+  flash:
+    site_items:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'
+  simple_form:
+    labels:
+      site_item:
+        site_title: '网站标题'
+        edit:
+          site_title: '编辑网站 user name'
+    hints:
+      site_items:
+        site_title: '填入网站标题'

@@ -1,0 +1,20 @@
+---
+zh-CN:
+  active_record:
+    models:
+      site_item: Site item
+    attributes:
+      site_item:
+        site_cate: Site cate
+        site_url: Site url
+        site_title: Site title
+        site_username: Site username
+        site_password: Site password
+        site_password_tips: Site password tips
+        note: Note
+        visit_count: Visit count
+        rate_count: Rate count
+    errors:
+      site_item: 
+  helpers:
+    site_item: 

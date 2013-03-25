@@ -1,4 +1,10 @@
 RailsComposerApp2::Application.routes.draw do
+  resources :site_items
+
+
+  resources :site_cates
+
+
   authenticated :user do
     root :to => 'home#index'
   end

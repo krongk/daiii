@@ -1,0 +1,21 @@
+#encoding :utf-8
+---
+zh-CN:
+  site_cates:
+    index:
+      title: 网站分类
+    show:
+      title: 网站分类
+    edit:
+      title: 编辑网站分类
+    new:
+      title: 添加网站分类
+  flash:
+    site_cates:
+      create:
+        notice: ! '%{resource_name} 成功添加.'
+      update:
+        notice: ! '%{resource_name} 修改成功.'
+      destroy:
+        notice: ! '%{resource_name} 删除成功.'
+        alert: ! '%{resource_name} 删除失败.'

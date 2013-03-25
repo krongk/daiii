@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+#This application was generated with the rails_apps_composer gem:
+#https://github.com/RailsApps/rails_apps_composer
+source 'http://rubygems.org'
 gem 'rails', '3.2.12'
-gem 'sqlite3'
+gem 'mysql2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -23,5 +25,40 @@ gem "quiet_assets", ">= 1.0.2", :group => :development
 gem "figaro", ">= 0.6.3"
 gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
-gem "libv8", ">= 3.11.8"
-gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
+
+#not for windows but for linux
+#gem "libv8", ">= 3.11.8"
+#gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
+
+#==I18n
+	# Central point to collect locale data for use in Ruby on Rails.
+	# Add below to config to include only I18n which you want:
+	# 	config.i18n.available_locales = ['es-CO', :de]
+	gem 'rails-i18n', '~> 0.1.8'
+	# Creates yaml locale files for models and views when using the model / scaffold_controller generators.
+	gem 'i18n_yaml_generator', '~> 0.0.1'
+
+#===Admin
+	gem 'activeadmin', '~> 0.3.4'
+	gem "meta_search",    '>= 1.1.0.pre'
+
+#===WYSIWYG Editor
+	gem 'tinymce-rails', '~> 3.4.7'
+
+#===Chinese Misic
+	gem 'chinese_pinyin'
+
+#===Pagination
+	#debug: ActiveAdmin undefined local variable or method `per', so must down will_paginate '3.0.2' to '3.0.pre2'
+	# gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git'
+	# the will_patinate I18n is here: https://github.com/tigrish/will-paginate-i18n
+	#gem "will_paginate", "3.0.pre2"
+
+	#setup bootstrap patinate: https://github.com/yrgoldteeth/bootstrap-will_paginate
+	gem 'bootstrap-will_paginate'
+
+#https://github.com/kjvarga/sitemap_generator
+#gem 'sitemap_generator'
+
+#for background job
+#gem 'sidekiq'
