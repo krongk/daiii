@@ -3,4 +3,5 @@ class SiteCate < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :user_id, :name
+  validates :name, :presence => true
 end

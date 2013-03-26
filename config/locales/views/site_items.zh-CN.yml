@@ -23,13 +23,13 @@ zh-CN:
       site_item:
         site_title: '网站标题'
         site_cate: '分类'
-        site_url: "网站地址"
-        site_username: "网站用户名"
-        site_password: "网站用密码"
-        site_password_tips: "密码提示"
-        note: "备注"
-        visit_count: "访问次数"
-        rate_count: "评级数"
+        site_url: '网站地址'
+        site_username: '网站用户名'
+        site_password: '网站用密码'
+        site_password_tips: '密码提示'
+        note: '备注'
+        visit_count: '访问次数'
+        rate_count: '评级数'
     hints:
       site_items:
         site_title: '填入网站标题'

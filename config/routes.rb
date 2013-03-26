@@ -1,6 +1,9 @@
 RailsComposerApp2::Application.routes.draw do
-  resources :site_items
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
+  ActiveAdmin.routes(self)
+
+  resources :site_items
 
   resources :site_cates
 

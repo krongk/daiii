@@ -27,7 +27,8 @@ class MissingKeysFinder
     #write all keys to file
     f = File.new("all_i18n_keys.txt", "w")
     all_keys.each do |key|
-      f.write_line(key)
+      f.write(key)
+      f.write("\n")
     end
     f.close
 

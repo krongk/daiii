@@ -1,8 +1,6 @@
 ---
 zh-CN:
   simple_form:
-    error_notification:
-      default_message: '提交失败，请按照以下提示修改：'
     labels:
       user:
         name: '名称'
