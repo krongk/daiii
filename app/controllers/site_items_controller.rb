@@ -28,8 +28,9 @@ class SiteItemsController < ApplicationController
     @site_item = SiteItem.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @site_item }
+      #format.html # new.html.erb
+      #format.json { render json: @site_item }
+      format.js # new.js.erb
     end
   end
 
