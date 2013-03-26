@@ -1,7 +1,14 @@
-<%= link_to " DaIII.com ", root_path, :class => 'brand' %>
+<%= link_to " DaIII ", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
-    <li><%= link_to "分类", site_cates_path %> </li>
+    <li><%= link_to "我的收藏", site_cates_path %> </li>
+    <li>
+      <%= link_to "添加分类", new_site_cate_path, data: { toggle: "modal", target: "#ajax-modal" } %>
+    </li>
+    <li>
+      <%= link_to "添加网址", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %>
+    </li>
+
     <li>
     <%= link_to '退出', destroy_user_session_path, :method=>'delete' %>
     </li>
@@ -12,7 +19,7 @@
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to '管理账户', edit_user_registration_path %>
+      <%= link_to '管理账户', edit_user_registration_path %>
     </li>
     <% if current_user.has_role? :admin %>
       <li>
@@ -24,4 +31,10 @@
     <%= link_to '注册', new_user_registration_path %>
     </li>
   <% end %>
+
+  <li>
+    <%= link_to "Messages", "/home/modal_window", data: { toggle: "modal", target: "#ajax-modal" } %>
+  </li>
 </ul>
+
+<%= render 'layouts/modal' %>
