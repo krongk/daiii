@@ -8,13 +8,14 @@
       modal       =   '#ajax-modal'
 
   //i set the title through a helper function
-  $(title).html('添加分类');
+  $(title).html('添加网站');
   //hides the modal and shows the ajax content
   $(loader).fadeToggle('slow', function() {
     $(content).html('<%= j render("site_items/form") %>');
     $(body).addClass('longer')
     $(toolbar).hide();
     $(modal).modal();
+    $(body).removeClass('longer')
   });
   //brings the loader back up + gets rid of the content when linking to another controller method etc
   $(content).on('click', dataRemote, function(){

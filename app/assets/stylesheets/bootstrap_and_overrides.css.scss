@@ -2,8 +2,50 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+$link_color: #C920C9;
+
 .longer{
 	height: 1500px;
 	max-height: 1500px;
 	overflow: scroll;
+}
+
+.navbar{
+	.brand{
+		padding: 0px;
+	}
+	padding: 0px;
+	.navbar-inner{
+		padding: 0px;
+		.container{
+			padding: 0px;
+		}
+	}
+}
+.nav{
+	li{
+		border: 1px;
+		a{
+			color: $link_color;
+			display: block;
+		}
+		a:hover{
+			color: #fff;
+			background-color: $link_color;
+		}
+		font-size: 20px;
+		padding: 25px 5px 15px;
+		}
+	}
+#main{
+	.container{
+		margin-top: 40px;
+		.content{
+			background-color: #eee;
+		}
+	}
+}
+
+h1,h2,h3{
+	color: $link_color;
 }

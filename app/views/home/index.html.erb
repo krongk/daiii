@@ -1,12 +1,13 @@
-<p><%= @users.size %>个用户正在使用DaIII收藏他们喜欢的网页~</p>
-
-<% if user_signed_in? %>
-	<div class="alert alert-note">
-		<%#=link_to "添加分类", new_site_cate_path %>
-		<%= link_to "添加分类", new_site_cate_path, data: { toggle: "modal", target: "#ajax-modal" } %>
-		
-		<%=link_to "添加网址", new_site_item_path %>
+<% unless user_signed_in? %>
+	<div class="hero-unit">
+	  <h1>Hello, world!</h1>
+	  <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+	  <div class="alert alert-note">
+	  	<%= @users.size %>个用户正在使用DaIII收藏他们喜欢的网页~</div>
+	  <p><a href="#" class="btn btn-primary btn-large">Learn more »</a></p>
 	</div>
+
+<% else %>
 	<% current_user.site_cates.each do |site_cate| %>
 		<h2><%= site_cate.name %></h2>
 		<ul>
@@ -15,6 +16,5 @@
 			<% end %>
 		</ul>
 	<% end %>
-<% else %>
 
 <% end %>

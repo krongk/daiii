@@ -8,9 +8,9 @@
     <%= f.input :site_username %>
     <%= f.input :site_password %>
     <%= f.input :site_password_tips %>
-    <%= f.input :note %>
-    <%= f.input :visit_count %>
-    <%= f.input :rate_count %>
+    <%= f.input :note, :input_html =>{:rows => 4, :cols => 60} %>
+    <%#= f.input :visit_count %>
+    <%#= f.input :rate_count %>
   </div>
 
   <div class="form-actions">

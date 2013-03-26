@@ -7,20 +7,20 @@
       modal       =   '#ajax-modal'
 
   //i set the title through a helper function
-  $(title).html('登录');
+  $(title).html('会员登录');
   //hides the modal and shows the ajax content
-  $(loader).fadeToggle('slow', function() {
+  $(loader).fadeToggle('fast', function() {
     $(content).html('<%= j render("home/index") %>');
-    $(toolbar).hide();
+    $(toolbar).hide(); //隐藏页脚的关闭按钮
     $(modal).modal();
   });
   //brings the loader back up + gets rid of the content when linking to another controller method etc
-  // $(content).on('click', dataRemote, function(){
-  //   $(content).fadeOut('slow', function() {
-  //     $(content).empty();
-  //     $(loader).fadeIn('slow');
-  //   });
-  // });
+  $(content).on('click', dataRemote, function(){
+    $(content).fadeOut('slow', function() {
+      $(content).empty();
+      $(loader).fadeIn('slow');
+    });
+  });
 </script>
 
 <div class="modal-body-content"></div>
