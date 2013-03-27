@@ -1,5 +1,8 @@
+#encoding: utf-8
+require 'site_util'
 class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
+  include HomeHelper
   # GET /site_items
   # GET /site_items.json
   def index
@@ -45,10 +48,12 @@ class SiteItemsController < ApplicationController
     @site_item = SiteItem.new(params[:site_item])
     @site_item.site_cate_id = params[:site_item][:site_cate_id].to_i
     @site_item.user_id = current_user.id
+    @site_item.site_url = get_site_url(@site_item)
+    @site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
     
     respond_to do |format|
       if @site_item.save
-        format.html { redirect_to @site_item, notice: 'Site item was successfully created.' }
+        format.html { redirect_to root_path, notice: '网站添加成功.' }
         format.json { render json: @site_item, status: :created, location: @site_item }
       else
         format.html { render action: "new" }
@@ -64,7 +69,7 @@ class SiteItemsController < ApplicationController
 
     respond_to do |format|
       if @site_item.update_attributes(params[:site_item])
-        format.html { redirect_to @site_item, notice: 'Site item was successfully updated.' }
+        format.html { redirect_to root_path, notice: '网站添加成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

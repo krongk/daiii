@@ -1,3 +1,64 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/**************************************
+/ Gallery
+**************************************/
+.gallery-title { margin-bottom:15px; }
+.gallery-item { margin-bottom:15px; margin-top:15px; }
+
+.gallery-hover {
+  display:none; 
+  position:absolute; 
+  z-index: 10;
+}
+
+
+.project-details {
+  background:#f8f8f8;
+  display: block;
+  padding:10px;
+  border-bottom: 1px dotted #a9a9a9;
+  font-family: Georgia;
+  font-style: italic;
+  text-align:center;
+
+  width: auto\9;
+  height: auto;
+    max-width: 100%;
+}
+.project-details a {
+  margin: 0px; 
+  font-size: 12px; 
+  font-style: normal;
+  text-shadow:none;
+  display: block;
+  font-family: "Arvo", sans-serif; 
+  font-weight: normal;
+  text-transform:uppercase; 
+}
+.project-details {color: #6f6f6f;}
+.project-details a {color: #C920C9; font-size: 18px; font-weight: 700;}
+.project-details a:hover {color:#ef4f1d; text-decoration: none;}
+
+.project-info {margin: 0px 0px 40px 0px;}
+.project-info li { 
+  list-style: none; 
+  border-bottom: 1px dashed #a9a9a9;;
+  padding: 10px; }
+.project-info li h6 {display: inline; margin-right: 5px;}
+
+
+.gallery-post-grid {margin:0px;}
+.gallery-post-grid li {list-style: none; float: left; margin-bottom: 30px;}
+
+.gallery-cats {margin: 0px 0px 20px 0px;}
+.gallery-cats li{
+  list-style: none; 
+  float: left; 
+  padding: 0px 10px;
+  border-left: 1px dotted #a9a9a9;
+}
+.gallery-cats li:first-child{border-left:0px;}

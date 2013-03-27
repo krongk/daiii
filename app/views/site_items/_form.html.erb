@@ -2,13 +2,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :site_cate, :selected => params[:new_site_cate_id] %>
-    <%= f.input :site_url %>
+    <%= f.association :site_cate, collection: current_user.site_cates, :selected => params[:new_site_cate_id] %>
+    
     <%= f.input :site_title %>
-    <%= f.input :site_username %>
-    <%= f.input :site_password %>
-    <%= f.input :site_password_tips %>
+    <%= f.input :site_url %>
     <%= f.input :note, :input_html =>{:rows => 4, :cols => 60} %>
+    
+    <%= f.input :site_username %>
+    <%= f.input :site_password, input_html: {type: 'input'} %>
+    <%= f.input :site_password_tips,  input_html: {type: 'input'} %>
+    
     <%#= f.input :visit_count %>
     <%#= f.input :rate_count %>
   </div>

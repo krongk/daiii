@@ -2,10 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-#bind the the height of the modal body to the window with something like this:
-$.fn.modal.defaults.maxHeight ->
-	$(window).height() - 165
-
 # called from a bootstrap dropdown, this closes the dropdown
 $('a[data-toggle=modal]').on 'click', ->
   $('.dropdown').removeClass('open')
@@ -23,3 +19,4 @@ $(document).on 'click', '[data-dismiss=modal], .modal-scrollable', ->
 
 $(document).on 'click', '#ajax-modal', (e) ->
   e.stopPropagation();
+

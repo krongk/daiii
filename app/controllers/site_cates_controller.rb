@@ -47,7 +47,7 @@ class SiteCatesController < ApplicationController
     @site_cate.user_id = current_user.id
     respond_to do |format|
       if @site_cate.save
-        format.html { redirect_to site_cates_url, notice: '添加成功.' }
+        format.html { redirect_to root_path, notice: '添加成功.' }
         format.json { render json: @site_cate, status: :created, location: @site_cate }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class SiteCatesController < ApplicationController
 
     respond_to do |format|
       if @site_cate.update_attributes(params[:site_cate])
-        format.html { redirect_to @site_cate, notice: '更新成功.' }
+        format.html { redirect_to root_path, notice: '更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

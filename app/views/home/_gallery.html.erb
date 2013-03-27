@@ -1,0 +1,30 @@
+<div class="row gallery-row"><!-- Begin Gallery Row --> 
+
+<div class="span12">
+    <h5 class="title-bg" style="padding-bottom: 12px;"><%= site_cate.name %> 
+        <small>at our recent work</small>
+        <button class="btn btn-mini hidden-phone" type="button">
+            <%=link_to "浏览更多", site_cate_path(site_cate) %>
+        </button>
+    </h5>
+
+
+<div class="row clearfix no-margin">       
+<ul class="gallery-post-grid holder">
+    <% site_cate.site_items.order("updated_at DESC").limit(8).each do |site_item| %>
+        <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+           <!--  <span class="gallery-hover">
+                &nbsp;
+            </span>
+            <%#= link_to image_tag(get_site_icon(site_item), :alt => [site_item.site_password,site_item.site_password_tips].join(': ')), get_site_url(site_item), :target => '_blank', :alt => [site_item.site_password,site_item.site_password_tips].join(': ') %> -->
+            <span class="project-details">
+            <%= link_to site_item.site_title.truncate(20), get_site_url(site_item), :target => '_blank' %>
+            <%= site_item.note.truncate(30) %>.</span>
+        </li>
+    <% end %>
+</ul>
+</div>
+<!-- Gallery Thumbnails
+================================================== -->
+</div>
+</div>

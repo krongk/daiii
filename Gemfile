@@ -64,5 +64,9 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 #https://github.com/kjvarga/sitemap_generator
 #gem 'sitemap_generator'
 
+#==Forager
+	gem 'mechanize', '2.0.1'
+	gem 'hpricot', '0.8.6'
+
 #for background job
 #gem 'sidekiq'
