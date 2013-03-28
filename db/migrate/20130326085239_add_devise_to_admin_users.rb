@@ -1,16 +1,16 @@
 class AddDeviseToAdminUsers < ActiveRecord::Migration
   def change
-    add_column :admin_users, :email, :null  => false, :default => ""
-    add_column :admin_users, :encrypted_password, :null  => false, :default => ""
-    add_column :admin_users, :reset_password_token
-    add_column :admin_users, :reset_password_sent_at
-    add_column :admin_users, :remember_created_at
-    add_column :admin_users, :sign_in_count, :default => 0
-    add_column :admin_users, :current_sign_in_at
-    add_column :admin_users, :last_sign_in_at
-    add_column :admin_users, :current_sign_in_at
-    add_column :admin_users, :current_sign_in_ip
-    add_column :admin_users, :last_sign_in_ip
+    add_column :admin_users, :email, :string, :null  => false, :default => ""
+    add_column :admin_users, :encrypted_password, :string, :null  => false, :default => ""
+    add_column :admin_users, :reset_password_token, :string
+    add_column :admin_users, :reset_password_sent_at, :datetime
+    add_column :admin_users, :remember_created_at, :datetime
+    add_column :admin_users, :sign_in_count, :integer, :default => 0
+    add_column :admin_users, :current_sign_in_at, :datetime
+    add_column :admin_users, :last_sign_in_at, :datetime
+    add_column :admin_users, :current_sign_in_at, :datetime
+    add_column :admin_users, :current_sign_in_ip, :string
+    add_column :admin_users, :last_sign_in_ip, :string
 
     add_index :admin_users, :email,                :unique => true
     add_index :admin_users, :reset_password_token, :unique => true
