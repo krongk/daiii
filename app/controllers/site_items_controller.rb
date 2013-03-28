@@ -3,6 +3,10 @@ require 'site_util'
 class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
   include HomeHelper
+  caches_action :index
+  caches_action :show
+  caches_action :new
+  
   # GET /site_items
   # GET /site_items.json
   def index
@@ -49,6 +53,9 @@ class SiteItemsController < ApplicationController
     @site_item.site_cate_id = params[:site_item][:site_cate_id].to_i
     @site_item.user_id = current_user.id
     @site_item.site_url = get_site_url(@site_item)
+
+    #sidekiq not work on Windows
+    #FetchSiteIconWorker.perform_async(@site_item)
     @site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
     
     respond_to do |format|

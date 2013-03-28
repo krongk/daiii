@@ -1,6 +1,9 @@
 #encoding: utf-8
 class SiteCatesController < ApplicationController
   before_filter :authenticate_user! 
+  caches_action :index
+  caches_action :show
+  caches_action :new
   # GET /site_cates
   # GET /site_cates.json
   def index
@@ -16,6 +19,7 @@ class SiteCatesController < ApplicationController
   # GET /site_cates/1.json
   def show
     @site_cate = SiteCate.find(params[:id])
+    @site_items = @site_cate.site_items.order("updated_at DESC").paginate(:page => params[:page]|| 1, :per_page => 8)
 
     respond_to do |format|
       format.html # show.html.erb

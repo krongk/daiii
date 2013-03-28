@@ -2,16 +2,16 @@
 
 <div class="span12">
     <h5 class="title-bg" style="padding-bottom: 12px;"><%= site_cate.name %> 
-        <small>daiii at our recent work</small>
+        <small>take daiii at our recent work</small>
         <button class="btn btn-mini hidden-phone" type="button">
-            <%=link_to "浏览更多", site_cate_path(site_cate) %>
+            <%= link_to "添加网址", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %>
         </button>
     </h5>
 
 
 <div class="row clearfix no-margin">       
 <ul class="gallery-post-grid holder">
-    <%  site_items_no_icons, site_items_has_icons = site_cate.site_items.partition{|s| s.site_icon.blank?} %>
+    <%  site_items_no_icons, site_items_has_icons = @site_items.partition{|s| s.site_icon.blank?} %>
     <% site_items_has_icons.each do |site_item| %>
         <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
            <span class="gallery-img">
@@ -33,6 +33,7 @@
     <% end %>
 </ul>
 </div>
+
 <!-- Gallery Thumbnails
 ================================================== -->
 </div>

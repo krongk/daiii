@@ -18,27 +18,39 @@ module SiteUtil
   end
 
   def self.get_icon(url)
-    puts url
-    uri = URI(url)
-    
-    agent = Mechanize.new
-    page = agent.get(url)
-    doc = Hpricot(page.body)
-    imgs = doc.search("//img")
+    begin
+      puts url
+      uri = URI(url)
+      puts uri
 
-    puts "raw-------------------"
-    imgs.each do |img|
-      puts img['src']
-    end
-    puts "raw- end------------------"
+      agent = Mechanize.new
+      page = agent.get(url)
+      doc = Hpricot(page.body)
+      imgs = doc.search("//img")
 
-    best_icon = choose_best_icon(imgs, uri, ['name', 'domain', 'width'])
-    src = best_icon['src'] unless best_icon.nil?
-    if src =~ /^\//
-      p = src.index(uri.path) - 1
-      src = url[0..p] + src
+      puts "raw-------------------"
+      imgs.each do |img|
+        puts img['src']
+      end
+      puts "raw- end------------------"
+
+      best_img = choose_best_icon(imgs, uri, ['name', 'domain', 'width'])
+      src = best_img['src'] unless best_img.nil?
+      puts src
+      if src
+        if src =~ /^http/i
+          return src
+        elsif src =~ /^\//i
+          return "#{url.sub(/\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk).*$/, '.\1')}#{src}"
+        else
+          return "#{url}#{src}"
+        end
+      end
+      return src
+    rescue 
+      return nil
     end
-    return src 
+    #^(((ht|f)tp(s?))\://)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\;\?\'\\\+&amp;%\$#\=~_\-]+))*$
     # puts imgs.size
     # #case1: the name is logo|icon
     # matched_imgs = imgs.select { |img| img.attributes['src'] =~ /logo|icon/  }
@@ -64,12 +76,16 @@ module SiteUtil
     #case1: the name is logo|icon
     if cases.include?('name') 
       matched_imgs = imgs.select { |img| img.attributes['src'] =~ /logo|icon/  }
+      matched_imgs = imgs.select { |img| (50..250).include?(img.attributes['width'].to_i) } if matched_imgs.size > 1
       flag = 'name'
     elsif cases.include?('domain') && uri
       matched_imgs = imgs.select { |img| img.attributes['alt'] == uri.host  }
+      matched_imgs = imgs.select { |img| (50..250).include?(img.attributes['width'].to_i) } if matched_imgs.size > 1
       flag = 'domain'
     elsif cases.include?('width')
       matched_imgs = imgs.select { |img| (50..250).include?(img.attributes['width'].to_i) }
+      matched_imgs = imgs.select { |img| img.attributes['src'] =~ /log|logo|icon/  } if matched_imgs.size > 1
+      matched_imgs = imgs.select { |img| img.attributes['alt'] == uri.host  } if matched_imgs.size > 1
       flag = 'width'
     else
       imgs

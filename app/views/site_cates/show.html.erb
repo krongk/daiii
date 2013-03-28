@@ -1,7 +1,5 @@
-<p>
-  <%= @site_cate.name %>
-</p>
+<%= render :partial => "site_cates/gallery", :locals => {:site_cate => @site_cate} %>
 
-
+<%= will_paginate  @site_items %>
 <%= link_to '编辑', edit_site_cate_path(@site_cate) %> |
 <%= link_to '返回', site_cates_path %>

@@ -9,7 +9,7 @@ module HomeHelper
 
   def get_site_icon(site_item)
     if site_item.site_icon.blank?
-      return "gallery-img-4-4col.jpg"
+      return nil
     end
     site_item.site_icon
   end

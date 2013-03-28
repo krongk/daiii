@@ -9,10 +9,14 @@
 .gallery-title { margin-bottom:15px; }
 .gallery-item { margin-bottom:15px; margin-top:15px; }
 
-.gallery-hover {
-  display:none; 
-  position:absolute; 
-  z-index: 10;
+.gallery-img {
+  display: block;
+  padding: 1px;
+  background:#f8f8f8;
+  width: auto\9;
+  height: 80px;
+    max-width: 100%;
+  text-align: center;
 }
 
 
@@ -35,7 +39,7 @@
   font-style: normal;
   text-shadow:none;
   display: block;
-  font-family: "Arvo", sans-serif; 
+  font-family: "微软雅黑", "Arvo", sans-serif; 
   font-weight: normal;
   text-transform:uppercase; 
 }
@@ -53,12 +57,3 @@
 
 .gallery-post-grid {margin:0px;}
 .gallery-post-grid li {list-style: none; float: left; margin-bottom: 30px;}
-
-.gallery-cats {margin: 0px 0px 20px 0px;}
-.gallery-cats li{
-  list-style: none; 
-  float: left; 
-  padding: 0px 10px;
-  border-left: 1px dotted #a9a9a9;
-}
-.gallery-cats li:first-child{border-left:0px;}

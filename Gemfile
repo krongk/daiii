@@ -69,4 +69,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 	gem 'hpricot', '0.8.6'
 
 #for background job
-#gem 'sidekiq'
+gem 'sidekiq', '2.5.4'
