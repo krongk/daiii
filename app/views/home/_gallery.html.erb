@@ -10,26 +10,36 @@
 
 
 <div class="row clearfix no-margin">       
-<ul class="gallery-post-grid holder">
+<ul class="thumbnails">
     <%  site_items_no_icons, site_items_has_icons = site_cate.site_items.partition{|s| s.site_icon.blank?} %>
-    <% site_items_has_icons.each do |site_item| %>
-        <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
-           <span class="gallery-img">
-            <%= link_to image_tag(get_site_icon(site_item), :width => '218px'), get_site_url(site_item), :target => '_blank', :alt => [site_item.site_password,site_item.site_password_tips].join(': ') %>
-           </span>
+    <% site_items_has_icons.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
+      <li class="span3">
+ 
+        <div class="thumbnail">
+          <%=image_tag site_item.site_icon, :alt => site_item.site_title %>
+          <h4><%= link_to site_item.site_title, site_item.site_url %></h4>
+          <p>
+            <% if  site_item.site_password %>
+                账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
+            <% end %>
+            <%= site_item.note %>...</p>
+        </div>
 
-            <span class="project-details">
-            <%= link_to site_item.site_title.truncate(17), get_site_url(site_item), :target => '_blank' %>
-            <%= site_item.note.truncate(16) %>.</span>
-        </li>
+      </li>
     <% end %>
+    <% site_items_no_icons.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
+      <li class="span3">
+ 
+        <div class="thumbnail">
+          <h4><%= link_to site_item.site_title, site_item.site_url %></h4>
+          <p>
+            <% if  site_item.site_password %>
+               账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
+            <% end %>
+            <%= site_item.note %>...</p>
+        </div>
 
-    <% site_items_no_icons.each do |site_item| %>
-        <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
-            <span class="project-details">
-            <%= link_to site_item.site_title.truncate(17), get_site_url(site_item), :target => '_blank' %>
-            <%= site_item.note.truncate(30) %>.</span>
-        </li>
+      </li>
     <% end %>
 </ul>
 </div>
