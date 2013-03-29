@@ -24,7 +24,7 @@ module SiteUtil
       puts uri
 
       $agent ||= Mechanize.new
-      page = agent.get(url)
+      page = $agent.get(url)
       doc = Hpricot(page.body)
       imgs = doc.search("//img")
 
