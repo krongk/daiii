@@ -56,6 +56,7 @@ class SiteItemsController < ApplicationController
     respond_to do |format|
       if @site_item.save
         #sidekiq not work on Windows
+        @site_item.reload
         FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url)
         #@site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
 
