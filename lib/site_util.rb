@@ -47,7 +47,8 @@ module SiteUtil
         end
       end
       return src
-    rescue 
+    rescue => ex
+      puts ex.message
       return nil
     end
     #^(((ht|f)tp(s?))\://)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\;\?\'\\\+&amp;%\$#\=~_\-]+))*$
