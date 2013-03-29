@@ -17,12 +17,12 @@
  
         <div class="thumbnail">
           <%=image_tag site_item.site_icon, :alt => site_item.site_title %>
-          <h4><%= link_to site_item.site_title, site_item.site_url %></h4>
+          <h4><%= link_to site_item.site_title.truncate(20), site_item.site_url, :target => '_blank' %></h4>
           <p>
-            <% if  site_item.site_password %>
+            <% unless  site_item.site_username.blank? %>
                 账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
             <% end %>
-            <%= site_item.note %>...</p>
+            <%= site_item.note.truncate(60) %>...</p>
         </div>
 
       </li>
@@ -31,12 +31,12 @@
       <li class="span3">
  
         <div class="thumbnail">
-          <h4><%= link_to site_item.site_title, site_item.site_url %></h4>
+          <h4><%= link_to site_item.site_title.truncate(22), site_item.site_url, :target => '_blank' %></h4>
           <p>
-            <% if  site_item.site_password %>
+            <% unless  site_item.site_username.blank? %>
                账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
             <% end %>
-            <%= site_item.note %>...</p>
+            <%= site_item.note.truncate(60) %>...</p>
         </div>
 
       </li>

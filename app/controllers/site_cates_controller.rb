@@ -3,7 +3,7 @@ class SiteCatesController < ApplicationController
   before_filter :authenticate_user! 
   caches_action :index
   caches_action :show
-  caches_action :new
+
   # GET /site_cates
   # GET /site_cates.json
   def index

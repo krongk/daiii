@@ -5,7 +5,6 @@ class SiteItemsController < ApplicationController
   include HomeHelper
   caches_action :index
   caches_action :show
-  caches_action :new
   
   # GET /site_items
   # GET /site_items.json
