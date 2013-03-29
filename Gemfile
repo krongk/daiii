@@ -1,6 +1,6 @@
 #This application was generated with the rails_apps_composer gem:
 #https://github.com/RailsApps/rails_apps_composer
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'mysql2'
 group :assets do
@@ -31,8 +31,8 @@ gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 
 #not for windows but for linux
-#gem "libv8", ">= 3.11.8"
-#gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
+gem "libv8", ">= 3.11.8"
+gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
 
 #==I18n
 	# Central point to collect locale data for use in Ruby on Rails.

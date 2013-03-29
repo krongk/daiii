@@ -6,6 +6,7 @@ class CreateSiteItems < ActiveRecord::Migration
       t.string :site_url
       t.string :site_title
       t.string :site_username
+      t.string :site_icon
       t.string :site_password
       t.string :site_password_tips
       t.text :note

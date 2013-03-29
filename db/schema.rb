@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130326085238) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "site_cates", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "name",       :null => false
+    t.integer  "user_id"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130326085238) do
     t.string   "site_url"
     t.string   "site_title"
     t.string   "site_username"
+    t.string   "site_icon"
     t.string   "site_password"
     t.string   "site_password_tips"
     t.text     "note"
