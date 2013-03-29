@@ -12,7 +12,7 @@
 <% else %>
 
 	<% current_user.site_cates.each do |site_cate| %>
-		<%= render :partial => "home/gallery", :locals => {:site_cate => site_cate} %>
+		<%= render :partial => "home/gallery", :locals => {:site_cate => site_cate, :index_page => true} %>
 	<% end %>
 
 <% end %>

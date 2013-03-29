@@ -4,8 +4,20 @@
 
 .thumbnail{
 	background-color: #fff;
+  word-wrap: break-word; 
+  word-break: break-all;
 }
 
 .thumbnail:hover{
 	background-color: #ffccff;
+}
+
+.thumbnail img{
+  height: 60px;
+}
+.thumbnail h4{
+  height: 20px;
+}
+.thumbnail .text{
+  height: 60px;
 }

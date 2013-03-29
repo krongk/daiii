@@ -4,7 +4,11 @@
     <h5 class="title-bg" style="padding-bottom: 12px;"><%= site_cate.name %> 
         <small>daiii at our recent work</small>
         <button class="btn btn-mini hidden-phone" type="button">
+          <% if index_page %>
             <%=link_to "浏览更多", site_cate_path(site_cate) %>
+          <% else %>
+            <%= link_to "添加网址", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %>
+          <% end %>
         </button>
     </h5>
 
@@ -17,12 +21,13 @@
  
         <div class="thumbnail">
           <%=image_tag site_item.site_icon, :alt => site_item.site_title %>
-          <h4><%= link_to site_item.site_title.truncate(20), site_item.site_url, :target => '_blank' %></h4>
-          <p>
-            <% unless  site_item.site_username.blank? %>
-                账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
+          <h4><%= link_to site_item.site_title.truncate(12), site_item.site_url, :target => '_blank' %></h4>
+          <div class="text">
+            <%= site_item.note.truncate(45) %>...
+            <%=link_to edit_site_item_path(site_item) do %>
+              <i class="icon-edit"></i>
             <% end %>
-            <%= site_item.note.truncate(60) %>...</p>
+          </div>
         </div>
 
       </li>
@@ -31,12 +36,13 @@
       <li class="span3">
  
         <div class="thumbnail">
-          <h4><%= link_to site_item.site_title.truncate(22), site_item.site_url, :target => '_blank' %></h4>
-          <p>
-            <% unless  site_item.site_username.blank? %>
-               账户：<em><%= site_item.site_username %>:<%= site_item.site_password %>:<%= site_item.site_password_tips %></em><br/>
+          <h4><%= link_to site_item.site_title.truncate(11), site_item.site_url, :target => '_blank' %></h4>
+         <div class="text">
+            <%= site_item.note.truncate(45) %>...
+            <%=link_to edit_site_item_path(site_item) do %>
+              <i class="icon-edit"></i>
             <% end %>
-            <%= site_item.note.truncate(60) %>...</p>
+          </div>
         </div>
 
       </li>

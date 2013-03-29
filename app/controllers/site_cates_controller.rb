@@ -83,7 +83,7 @@ class SiteCatesController < ApplicationController
     @site_cate.destroy
 
     respond_to do |format|
-      format.html { redirect_to site_cates_url }
+      format.html { redirect_to "/" }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
 #This application was generated with the rails_apps_composer gem:
 #https://github.com/RailsApps/rails_apps_composer
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'mysql2'
 group :assets do
@@ -70,3 +70,6 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 #for background job
 gem 'sidekiq', '2.5.4'
+
+#bootstrap font awesome
+gem 'font-awesome-sass-rails'

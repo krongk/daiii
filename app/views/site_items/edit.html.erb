@@ -1,6 +1,10 @@
-<h1>编辑网站</h1>
+<h1>编辑收藏网址</h1>
 
 <%= render 'form' %>
 
-<%= link_to '显示', @site_item %> |
-<%= link_to '返回', site_items_path %>
+<%= link_to("删除", site_item_path(@site_item), :data => { :confirm => "你确定要Kill掉这个网址?" }, :method => :delete, :class => 'btn btn-mini')  %>
+ 
+<%= link_to '返回分类', site_cate_path(@site_item.site_cate) %>
+ |
+<%= link_to '返回首页', root_path %>
+

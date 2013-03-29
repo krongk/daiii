@@ -54,8 +54,8 @@ class SiteItemsController < ApplicationController
     @site_item.site_url = get_site_url(@site_item)
 
     #sidekiq not work on Windows
-    #FetchSiteIconWorker.perform_async(@site_item)
-    @site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
+    FetchSiteIconWorker.perform_async(@site_item)
+    #@site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
     
     respond_to do |format|
       if @site_item.save
@@ -91,7 +91,7 @@ class SiteItemsController < ApplicationController
     @site_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to site_items_url }
+      format.html { redirect_to "/" }
       format.json { head :no_content }
     end
   end
