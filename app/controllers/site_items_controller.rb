@@ -52,13 +52,13 @@ class SiteItemsController < ApplicationController
     @site_item.site_cate_id = params[:site_item][:site_cate_id].to_i
     @site_item.user_id = current_user.id
     @site_item.site_url = get_site_url(@site_item)
-
-    #sidekiq not work on Windows
-    FetchSiteIconWorker.perform_async(@site_item)
-    #@site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
-    
+   
     respond_to do |format|
       if @site_item.save
+        #sidekiq not work on Windows
+        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url)
+        #@site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
+
         format.html { redirect_to root_path, notice: '网站添加成功.' }
         format.json { render json: @site_item, status: :created, location: @site_item }
       else
