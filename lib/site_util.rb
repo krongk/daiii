@@ -19,24 +19,14 @@ module SiteUtil
 
   def self.get_icon(url)
     begin
-      puts url
       uri = URI(url)
-      puts uri
-
       $agent ||= Mechanize.new
       page = $agent.get(url)
       doc = Hpricot(page.body)
       imgs = doc.search("//img")
 
-      puts "raw-------------------"
-      imgs.each do |img|
-        puts img['src']
-      end
-      puts "raw- end------------------"
-
       best_img = choose_best_icon(imgs, uri, ['name', 'domain', 'width'])
       src = best_img['src'] unless best_img.nil?
-      puts src
       if src
         if src =~ /^http/i
           return src
