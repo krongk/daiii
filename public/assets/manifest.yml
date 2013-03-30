@@ -9,8 +9,16 @@
 !binary "bG9nby9pbmRleC5wbmc=": logo-331094a6dfda51301ebdc978f0af8b75.png
 !binary "YXBwbGljYXRpb24uanM=": application-821f76f3abe2bf104389cc6029dd7492.js
 !binary "YXBwbGljYXRpb24vaW5kZXguanM=": application-821f76f3abe2bf104389cc6029dd7492.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-36a4220efd191c5ce7eba5f10078888a.css
-!binary "YXBwbGljYXRpb24vaW5kZXguY3Nz": application-36a4220efd191c5ce7eba5f10078888a.css
+!binary "YXBwbGljYXRpb24uY3Nz": application-bde4234d01a1590dab447030cacc436b.css
+!binary "YXBwbGljYXRpb24vaW5kZXguY3Nz": application-bde4234d01a1590dab447030cacc436b.css
+!binary "Rm9udEF3ZXNvbWUub3Rm": FontAwesome-468f83b63df32064983141584a19ff17.otf
+!binary "Rm9udEF3ZXNvbWUvaW5kZXgub3Rm": FontAwesome-468f83b63df32064983141584a19ff17.otf
+fontawesome-webfont.eot: fontawesome-webfont-635909f146e208b3509acdf3b154bf0d.eot
+fontawesome-webfont/index.eot: fontawesome-webfont-635909f146e208b3509acdf3b154bf0d.eot
+fontawesome-webfont.ttf: fontawesome-webfont-6a4e273908b7e43d9e479d38b8ae5957.ttf
+fontawesome-webfont/index.ttf: fontawesome-webfont-6a4e273908b7e43d9e479d38b8ae5957.ttf
+fontawesome-webfont.woff: fontawesome-webfont-a0fbd98b232e7e1ef9cdaad813b26eb3.woff
+fontawesome-webfont/index.woff: fontawesome-webfont-a0fbd98b232e7e1ef9cdaad813b26eb3.woff
 !binary "dGlueW1jZS5qcw==": tinymce-114f44a1e8d06c589edf850cf1245ef6.js
 !binary "dGlueW1jZS9pbmRleC5qcw==": tinymce-114f44a1e8d06c589edf850cf1245ef6.js
 !binary "dGlueW1jZS9saWNlbnNlLnR4dA==": tinymce/license-6b8dfd9d628576a414268f9be344eb0a.txt

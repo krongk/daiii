@@ -18,10 +18,11 @@
     <%  site_items_no_icons, site_items_has_icons = site_cate.site_items.partition{|s| s.site_icon.blank?} %>
     <% site_items_has_icons.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
       <li class="span3">
- 
         <div class="thumbnail">
           <%=image_tag site_item.site_icon, :alt => site_item.site_title %>
-          <h4><%= link_to site_item.site_title.truncate(12), site_item.site_url, :target => '_blank' %></h4>
+          <h4>
+            <%= link_to site_item.site_title.truncate(12), site_item.site_url, :target => '_blank' %>
+          </h4>
           <div class="text">
             <%= site_item.note.truncate(45) %>...
             <%=link_to edit_site_item_path(site_item) do %>
@@ -34,11 +35,10 @@
     <% end %>
     <% site_items_no_icons.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
       <li class="span3">
- 
-        <div class="thumbnail">
-          <h4><%= link_to site_item.site_title.truncate(11), site_item.site_url, :target => '_blank' %></h4>
+        <div class="thumbnail no_img">
+          <h4><%= link_to site_item.site_title.truncate(12), site_item.site_url, :target => '_blank' %></h4>
          <div class="text">
-            <%= site_item.note.truncate(45) %>...
+            <%= site_item.note.truncate(28) %>...
             <%=link_to edit_site_item_path(site_item) do %>
               <i class="icon-edit"></i>
             <% end %>
