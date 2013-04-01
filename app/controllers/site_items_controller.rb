@@ -77,6 +77,7 @@ class SiteItemsController < ApplicationController
 
     respond_to do |format|
       if @site_item.update_attributes(params[:site_item])
+        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url)
         format.html { redirect_to root_path, notice: '网站添加成功.' }
         format.json { head :no_content }
       else

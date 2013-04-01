@@ -32,8 +32,8 @@ module SiteUtil
           return src
         elsif src =~ /^\//i
           return "#{url.sub(/\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk).*$/, '.\1')}#{src}"
-        else
-          return "#{url}#{src}"
+        # else
+        #   return "#{url}#{src}"
         end
       end
       return src
