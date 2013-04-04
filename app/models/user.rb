@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   
   has_many :site_cates
   has_many :site_items
+
+  before_create :set_default_roles
+  
+  private
+  def set_default_roles
+    self.roles = ['user']
+  end
 end

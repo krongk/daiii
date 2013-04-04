@@ -3,7 +3,6 @@
 
   <div class="form-inputs">
     <%= f.association :site_cate, collection: current_user.site_cates, :selected => params[:new_site_cate_id] %>
-    
     <%= f.input :site_title %>
     <%= f.input :site_url %>
     <%= f.input :note, :input_html =>{:rows => 4, :cols => 60} %>

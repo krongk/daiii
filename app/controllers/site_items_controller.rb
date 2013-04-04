@@ -9,6 +9,7 @@ class SiteItemsController < ApplicationController
   # GET /site_items
   # GET /site_items.json
   def index
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @site_items = SiteItem.all
 
     respond_to do |format|
