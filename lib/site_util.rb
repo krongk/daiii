@@ -19,6 +19,10 @@ module SiteUtil
 
   def self.get_icon(url)
     begin
+      unless (ico = get_favicon(url)).nil?
+        return ico
+      end
+      
       uri = URI(url)
       $agent ||= Mechanize.new
       page = $agent.get(url)
@@ -88,6 +92,12 @@ module SiteUtil
     else
       choose_best_icon(imgs, uri, cases - [flag])
     end
+  end
+
+  def self.get_favicon(url)
+    doc = Nokogiri::HTML(open(url))
+    icon = doc.search("link[@rel='shortcut icon']") | doc.search("link[@rel='icon']")
+    icon_urls = icon.map {|i| i.attributes["href"].value()}.first
   end
 end
 

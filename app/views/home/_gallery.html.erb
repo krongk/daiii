@@ -21,10 +21,10 @@
         <div class="thumbnail">
           <%=image_tag site_item.site_icon, :alt => site_item.site_title %>
           <h4>
-            <%= link_to site_item.site_title.truncate(22), site_item.site_url, :target => '_blank' %>
+            <%= link_to site_item.site_title.to_s.truncate(22), site_item.site_url, :target => '_blank' %>
           </h4>
           <div class="text">
-            <%= site_item.note.truncate(45) %>...
+            <%= site_item.note.to_s.truncate(45) %>...
             <%=link_to edit_site_item_path(site_item) do %>
               <i class="icon-edit"></i>
             <% end %>
@@ -36,9 +36,9 @@
     <% site_items_no_icons.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
       <li class="span3">
         <div class="thumbnail no_img">
-          <h4><%= link_to site_item.site_title.truncate(22), site_item.site_url, :target => '_blank' %></h4>
+          <h4><%= link_to site_item.site_title.to_s.truncate(22), site_item.site_url, :target => '_blank' %></h4>
          <div class="text">
-            <%= site_item.note.truncate(28) %>...
+            <%= site_item.note.to_s.truncate(28) %>...
             <%=link_to edit_site_item_path(site_item) do %>
               <i class="icon-edit"></i>
             <% end %>

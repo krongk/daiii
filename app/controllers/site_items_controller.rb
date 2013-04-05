@@ -53,12 +53,13 @@ class SiteItemsController < ApplicationController
     @site_item.site_cate_id = params[:site_item][:site_cate_id].to_i
     @site_item.user_id = current_user.id
     @site_item.site_url = get_site_url(@site_item)
+    @site_item.site_title ||= get_site_title_from_url(@site_item.site_url)
     @site_item.site_title = @site_item.site_title.gsub(/^http(?:s)?\:\/\//, '').gsub(/www\./, '') unless @site_item.site_title.blank?
     respond_to do |format|
       if @site_item.save
         #sidekiq not work on Windows
         @site_item.reload
-        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url)
+        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url) unless request.host == 'localhost'
         #@site_item.site_icon = SiteUtil.get_icon(@site_item.site_url)
         #@site_item.save!
 
