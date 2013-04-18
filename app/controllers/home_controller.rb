@@ -12,4 +12,15 @@ class HomeController < ApplicationController
 	    format.js
 	  end
   end
+
+  def like_view
+    return if current_user.nil?
+    if params[:like] == 'grid'
+      current_user.like_view = 'grid'
+    else
+      current_user.like_view = 'list'
+    end
+    current_user.save!
+    redirect_to '/'
+  end
 end

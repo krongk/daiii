@@ -16,4 +16,5 @@ RailsComposerApp2::Application.routes.draw do
   resources :users
 
   get "home/modal_window"
+  get "home/like_view"
 end

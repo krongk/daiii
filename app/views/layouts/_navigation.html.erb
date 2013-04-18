@@ -1,5 +1,6 @@
 
 <%= link_to image_tag(asset_path('logo.png')), root_path, :class => 'brand' %>
+
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
@@ -7,6 +8,13 @@
     </li>
     <li>
       <%= link_to "添加收藏", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %>
+    </li>
+    <li>
+      <% if current_user.like_view == 'grid' %>
+        <%= link_to "列表布局", "/home/like_view?like=list" %>
+      <% else %>
+        <%= link_to "网格布局", "/home/like_view?like=grid" %>
+      <% end %>
     </li>
 
     <li>

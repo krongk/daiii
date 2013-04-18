@@ -44,9 +44,14 @@
 </div>
 
 <% else %>
-
-	<% current_user.site_cates.each do |site_cate| %>
-		<%= render :partial => "home/gallery", :locals => {:site_cate => site_cate, :index_page => true} %>
+  <% if current_user.like_view == 'grid' %>
+		<% current_user.site_cates.each do |site_cate| %>
+			<%= render :partial => "home/gallery", :locals => {:site_cate => site_cate, :index_page => true} %>
+		<% end %>
+	<% else %>
+		<% current_user.site_cates.each do |site_cate| %>
+			<%= render :partial => "home/list", :locals => {:site_cate => site_cate, :index_page => true} %>
+		<% end %>
 	<% end %>
-
+	
 <% end %>
