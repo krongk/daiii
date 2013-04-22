@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+<div class="content">
   <% @site_item ||= SiteItem.new %>
   <%= simple_form_for(@site_item) do |f| %>
       <%#= f.select :site_cate, current_user.site_cates.map{|s| [s.name, s.id]}, :selected => params[:new_site_cate_id],  label: false %>
@@ -9,5 +10,5 @@
       <%= f.button :submit, "快速收藏", class: 'btn-success btn_upper' %>
 
   <% end %>
-
+</div>
 <% end %>

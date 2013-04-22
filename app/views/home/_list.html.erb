@@ -17,7 +17,7 @@
       <% if !(site_item.site_username.blank? && site_item.site_password.blank?) %>
         用户名：<%= site_item.site_username %> &nbsp;密码：<%= site_item.site_password %>, <%= site_item.site_password_tips %>
       <% end %>
-    </td><td class="pull-right">
+    </td><td class="text-right">
           <%=link_to edit_site_item_path(site_item) do %>
             <i class="icon-edit"></i>
           <% end %>
