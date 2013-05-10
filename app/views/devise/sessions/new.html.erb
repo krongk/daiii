@@ -1,8 +1,13 @@
-<h2>用户登录</h2>
+<div class="row-fluid">
+	<div class="span10">
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.input :email, :autofocus => true %>
   <%= f.input :password %>
   <%= f.input :remember_me, :as => :boolean, input_html: {checked: 'checked'} if devise_mapping.rememberable? %>
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>
+</div>
+<div class="span2 text-right">
 <%= render "devise/shared/links" %>
+</div>
+</div>

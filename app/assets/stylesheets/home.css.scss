@@ -2,33 +2,4 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.thumbnail{
-	background-color: #fff;
-  word-wrap: break-word; 
-  word-break: break-all;
-}
 
-.thumbnail:hover{
-	background-color: #eeeeee;
-}
-
-.thumbnail img{
-  height: 60px;
-}
-.thumbnail {
-  height: 160px;
-}
-.no_img{
-	height: 65px;
-}
-
-/**customer form of quick Daiii**/
-.field_longer{
-  width: 500px;
-}
-.field_shorter{
-  width: 100px;
-}
-.btn_upper{
-  margin-top: -8px;
-}

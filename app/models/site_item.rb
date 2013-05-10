@@ -7,4 +7,9 @@ class SiteItem < ActiveRecord::Base
   #validates :site_url, :uniqueness => true
   # validates :site_url, :format => { :with => /\A[a-zA-Z]+\z/,
   #   :message => "Only letters allowed" }
+
+  def self.recent(count)
+  	SiteItem.order("created_at DESC").limit(count)
+  end
+  
 end

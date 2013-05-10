@@ -1,0 +1,20 @@
+
+<div id="side_nav">
+	<ul class="nav nav-tabs nav-stacked">
+		<li <% unless params[:cate_id] -%>class="active" <% end -%>><a href="/">全部</a></li>
+		<% current_user.site_cates.each do |item| %>
+			<li <% if params[:cate_id].to_i == item.id -%>class="active" <% end -%>><%= link_to item.name, :controller=> :home, :action => :index, :cate_id => item.id %></li>
+		<% end %>
+	</ul>
+</div>
+
+<script type="text/javascript">
+  $(window).scroll(function(){ 
+     $el = $('#side_nav'); 
+     if ($(this).scrollTop() > 100 && $el.css('position') != 'fixed'){ 
+       $('#side_nav').css({'position': 'fixed', 'top': '80px'}); 
+     }else if($(this).scrollTop() < 100 && $el.css('position') == 'fixed'){ 
+       $('#side_nav').css({'position': 'absolute', 'top': '80px'}); 
+     } 
+  }); 
+</script>

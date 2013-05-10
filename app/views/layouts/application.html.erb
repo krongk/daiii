@@ -6,38 +6,46 @@
     <meta name="robots" content="all" />
     <meta name="author" content="inruby.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "DaIII" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "雨服务" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Railscomposerapp2" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <!--[if IE]>
+      <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+      <link rel="stylesheet" href="assets/ie.css">
     <![endif]-->
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
+
+  <div class="container">  
+    <div class="navbar navbar-fixed-top"> 
+      <div class="container header"> 
+        <a class="logo1" href="/"><%=image_tag asset_path("blue/rain.png"), :width => 48, :title => "首页" %></a>
+        <%= render 'layouts/navigation' %>
+      </div>
     </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'site_items/simple_form' %>
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
+  </div>
+  
+  
+  <div id="main" role="main">
+    <div class="container">
+      <div class="content">
+         <div class="row-fluid">
+          <div class="span1">
+            <%= render 'site_cates/cate_list' %>    
           </div>
-          <footer>
-          </footer>
+          <div class="span11">
+            <%= render 'layouts/messages' %> 
+            <%= yield %>
+          </div>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div>
+    </div> <!--! end of .container -->
+  </div> <!--! end of #main -->
+
+  <%=render 'layouts/footer' %>
+  <%= render 'layouts/modal' %>
   </body>
 </html>

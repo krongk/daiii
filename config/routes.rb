@@ -11,10 +11,12 @@ RailsComposerApp2::Application.routes.draw do
   authenticated :user do
     root :to => 'home#index'
   end
-  root :to => "home#index"
+  root :to => "home#index_static"
   devise_for :users
   resources :users
 
   get "home/modal_window"
+  get "home/index_static"
   get "home/like_view"
+  match "us" => "home#us"
 end

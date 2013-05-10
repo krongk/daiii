@@ -1,3 +1,4 @@
+#encoding: utf-8
 class User < ActiveRecord::Base
   rolify
   # Include default devise modules. Others available are:
@@ -14,9 +15,15 @@ class User < ActiveRecord::Base
   has_many :site_items
 
   before_create :set_default_roles
-  
+  after_create :create_site_cate
+
   private
   def set_default_roles
-    self.roles = ['user']
+    self.roles = [Role.find_or_create_by_name('user')]
   end
+  
+  def create_site_cate
+    self.site_cates.create!(:name => "默认")
+  end
+
 end

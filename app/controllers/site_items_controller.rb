@@ -3,6 +3,9 @@ require 'site_util'
 class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
   include HomeHelper
+
+  layout false
+
   caches_action :index
   caches_action :show
   

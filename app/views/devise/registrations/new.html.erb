@@ -1,4 +1,5 @@
-<h2>用户注册</h2>
+<div class="row-fluid">
+	<div class="span10">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
@@ -8,4 +9,8 @@
   <%= f.input :password_confirmation, :required => true %>
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>
+</div>
+<div class="span2 text-right">
 <%= render "devise/shared/links" %>
+</div>
+</div>

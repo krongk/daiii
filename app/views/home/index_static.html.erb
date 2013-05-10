@@ -1,0 +1,29 @@
+<div class="alert alert-block">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4><%= Time.now.strftime("%Y-%m-%d") %>:</h4>
+  已经有<%= 300 + @user_count %>个网友正在使用雨服务收藏他们喜欢的网页...
+</div>
+
+<div class="">
+  <h1>您好, </h1>
+  <p>互联网是一个浩大而神奇的地方，充满着令人激动的页面和信息，我们不时想要回到某个页面。那么，随之而来的问题，当你打开你的书签和… …你可能不记得站点的名称，或忘了你把它放在什么文件夹，或者你无法在成堆的文件夹里把它给翻出来！
+	</p><p>
+	你不是唯一出现这种情况的人。这也是为什么有那么多的新型网站上线，提供给你全新的和直观的方式来收藏和保存网址内容。
+	雨服务就是其中一个，帮助你收藏喜欢的网页，单纯的、私密的---只是收藏。希望你喜欢!</p>
+
+  <p><a href="/users/sign_up" class="btn btn-primary btn-large">现在就开始 »</a>
+  	<button class="demo btn btn-primary btn-large" data-toggle="modal" href="#full-width">视频教程</button></p>
+</div>
+
+<div id="full-width" class="modal container hide fade" tabindex="-1">
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3>雨服务基本操作过程.</h3>
+</div>
+<div class="modal-body" style="text-align: center;">
+    <%=play_flash "/assets/雨服务.swf", :width => '800', :height => '420' %>
+</div>
+<div class="modal-footer">
+  <button type="button" data-dismiss="modal" class="btn">关闭</button>
+</div>
+</div>

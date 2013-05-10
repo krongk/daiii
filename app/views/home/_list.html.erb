@@ -1,27 +1,21 @@
-<div class="span12">
-    <h5 class="title-bg" style="padding-bottom: 12px; margin-left: -20px;"><%= site_cate.name %> 
-        <small>daiii at our recent work</small>
-        <button class="btn btn-mini hidden-phone" type="button">
-          <% if index_page %>
-            <%=link_to "浏览更多", site_cate_path(site_cate) %>
-          <% else %>
-            <%= link_to "添加网址", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %>
-          <% end %>
-        </button>
-    </h5>
-  <table class="table table-striped table-hover"><tbody>
-  <% site_cate.site_items.sort{|a, b| b.updated_at <=> a.updated_at}.each do |site_item| %>
-    <tr><td>
-      <b><%= site_item.site_title.to_s.truncate(42) %></b>
-      (<%= link_to site_item.site_url.to_s.truncate(42), site_item.site_url, :target => '_blank' %>)
-      <% if !(site_item.site_username.blank? && site_item.site_password.blank?) %>
-        用户名：<%= site_item.site_username %> &nbsp;密码：<%= site_item.site_password %>, <%= site_item.site_password_tips %>
+<% @left_items, @right_items = @site_items.partition{|r| r.id > @site_items[@site_items.size/2].id } %>
+<div class="row-fluid">
+  <div class="span6">
+    <table class="table table-striped table-hover">
+      <tbody>
+      <% @left_items.each do |site_item| %>
+        <%= render :partial => "site_items/show", :locals => {:site_item => site_item} %>
       <% end %>
-    </td><td class="text-right">
-          <%=link_to edit_site_item_path(site_item) do %>
-            <i class="icon-edit"></i>
-          <% end %>
-    </td></tr>
-  <% end %>
-  </tbody></table>
+      </tbody>
+    </table>
+  </div>
+  <div class="span6">
+    <table class="table table-striped table-hover">
+      <tbody>
+      <% @right_items.each do |site_item| %>
+        <%= render :partial => "site_items/show", :locals => {:site_item => site_item} %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

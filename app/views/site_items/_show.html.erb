@@ -1,0 +1,21 @@
+<tr><td>
+	<b><%= site_item.site_title.to_s.truncate(42) %></b>
+	(<%= link_to site_item.site_url.to_s.truncate(42), site_item.site_url, :target => '_blank' %>)
+
+	<% if !(site_item.site_username.blank? && site_item.site_password.blank?) %>
+		用户名：<%= site_item.site_username %> &nbsp;密码：<%= site_item.site_password %>, <%= site_item.site_password_tips %>
+	<% end %>
+	<span class="pull-right text-right">
+		<%= link_to site_item_path(site_item), data: { toggle: "modal", target: "#ajax-modal" } do %>
+		  <i class="icon-eye-open"></i>
+		<% end %>
+
+		<%= link_to edit_site_item_path(site_item), data: { toggle: "modal", target: "#ajax-modal" } do %>
+		  <i class="icon-edit"></i>
+		<% end %>
+
+		<%= link_to(site_item_path(site_item), :data => { :confirm => "你确定要Kill掉这个网址?" }, :method => :delete)  do %>
+		  <i class="icon-trash"></i>
+		<% end %>
+	</span> 
+</td></tr>
