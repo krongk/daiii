@@ -1,13 +1,12 @@
 class HomeController < ApplicationController
   caches_page :index_static, :us
-  caches_action :index
 
   def index
     unless current_user
       render "index_static", :layout => 'application_static'
       return 
     end
-    
+
     cate_id = params[:cate_id].to_i if params[:cate_id]
     if cate_id
       @site_items = SiteItem.where(:user_id => current_user.id, :site_cate_id => cate_id).order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 100)
