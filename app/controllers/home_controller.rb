@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  caches_page :index_static, :us
-
+  caches_page :us
+  caches_action :index_static
   def index
     unless current_user
       render "index_static", :layout => 'application_static'

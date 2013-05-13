@@ -1,7 +1,7 @@
 <div class="alert alert-block">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <h4><%= Time.now.strftime("%Y-%m-%d") %>:</h4>
-  已经有<%= 300 + @user_count %>个网友正在使用雨服务收藏他们喜欢的网页...
+  已经有<%= 300 + @user_count.to_i %>个网友正在使用雨服务收藏他们喜欢的网页...
 </div>
 
 <div class="">
