@@ -11,15 +11,19 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "雨服务" %>">
     <%= stylesheet_link_tag "application_static", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <!--[if IE 7]>
+    <!--[if IE]>
       <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+      <link rel="stylesheet" href="assets/ie.css">
+    <![endif]-->
+    <!--[if lte IE 6]>
+      <link rel="stylesheet" type="text/css" href="assets/bootstrap-ie6.css">
     <![endif]-->
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
   <body>
 
-<div class="container-narrow">
+<div id="ie-container" class="container-narrow">
   <div class="masthead">
     <ul class="nav nav-pills pull-right">
        <li>
@@ -46,5 +50,8 @@
 </div>
   <%=render 'layouts/footer' %>
   <%= render 'layouts/modal' %>
+  <!--[if lte IE 6]>
+    <script type="text/javascript" src="assets/bootstrap-ie.js"></script>
+  <![endif]-->
   </body>
 </html>
