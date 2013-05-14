@@ -16,12 +16,10 @@ class HomeController < ApplicationController
   end
 
   def index_static
-    @user_count = User.all.size
     render "index_static", :layout => 'application_static'
   end
 
   def us
-
   end
 
   def modal_window

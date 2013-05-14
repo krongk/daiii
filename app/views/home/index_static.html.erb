@@ -1,7 +1,7 @@
 <div class="alert alert-block">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <h4><%= Time.now.strftime("%Y-%m-%d") %>:</h4>
-  已经有<%= 300 + @user_count.to_i %>个网友正在使用雨服务收藏他们喜欢的网页...
+  已经有<%= 300 + User.all.size %>个网友正在使用雨服务收藏他们喜欢的网页...
 </div>
 
 <div class="">
@@ -12,8 +12,8 @@
 	雨服务就是其中一个，帮助你收藏喜欢的网页，单纯的、私密的---只是收藏。希望你喜欢!</p>
 
   <p>
-  通过云计算轻松收藏网址；通过雨服务提升使用价值。<br>
-  <a href="/users/sign_up" class="btn btn-primary btn-large">现在就试 »</a>
+  通过云计算轻松收藏网址；通过雨服务提升使用价值。</p>
+  <p><a href="/users/sign_up" class="btn btn-primary btn-large">现在就试 »</a>
   	<button class="demo btn btn-large" data-toggle="modal" href="#full-width">使用教程</button></p>
 </div>
 

@@ -7,20 +7,17 @@
 </p>
 
 <p>
-  <%= @site_item.site_username %>
+  用户名：<%= @site_item.site_username %>
 </p>
 
 <p>
-  <%= @site_item.site_password %>
+  密码：<%= @site_item.site_password %>
 </p>
 
 <p>
-  <%= @site_item.site_password_tips %>
+  密码提示：<%= @site_item.site_password_tips %>
 </p>
 
 <p>
-  <%= @site_item.note %>
+  备注：<%= @site_item.note %>
 </p>
-
-<%= link_to '编辑', edit_site_item_path(@site_item) %> |
-<%= link_to '返回', site_items_path %>

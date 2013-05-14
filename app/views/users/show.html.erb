@@ -1,3 +1,14 @@
 <h3>用户管理</h3>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+
+<table class="table table-striped">
+<% @user.site_cates.each do |cate| %>
+ <tr><td><b><%=cate.name %></b></td></tr>
+ <% cate.site_items.each do |item| %>
+ 	<tr><td>
+ 		<%=link_to item.site_title, item.site_url, :target => "_blank" %>
+ 	</td></tr>
+ <% end %>
+<% end %>
+</table>

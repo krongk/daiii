@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    authorize! :show, @user, :message => '没有权限访问.'
     @user = User.find(params[:id])
   end
   
