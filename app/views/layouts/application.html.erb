@@ -38,6 +38,11 @@
   <div id="main" role="main">
     <div class="container">
       <div class="content">
+        <% if mobile_device? %>
+          <%= render 'site_cates/cate_list' %>    
+          <%= render 'layouts/messages' %> 
+          <%= yield %>
+        <% else %>
          <div class="row-fluid">
           <div class="span1" id="ie-span1">
             <%= render 'site_cates/cate_list' %>    
@@ -46,7 +51,8 @@
             <%= render 'layouts/messages' %> 
             <%= yield %>
           </div>
-        </div>
+         </div>
+        <% end %>
       </div>
     </div> <!--! end of .container -->
   </div> <!--! end of #main -->
