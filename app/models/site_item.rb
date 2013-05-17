@@ -8,8 +8,18 @@ class SiteItem < ActiveRecord::Base
   # validates :site_url, :format => { :with => /\A[a-zA-Z]+\z/,
   #   :message => "Only letters allowed" }
 
+  acts_as_taggable
+  acts_as_taggable_on :tags, :skills
+  scope :by_created_date, order("created_at DESC")
+
   def self.recent(count)
   	SiteItem.order("created_at DESC").limit(count)
   end
   
 end
+
+
+acts_as_taggable_on :tags, :skills
+  scope :by_join_date, order("created_at DESC"
+
+    属性路 永陵路 阳西 迎宾 右 黄京剧  共 三太电子
