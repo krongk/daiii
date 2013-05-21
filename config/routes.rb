@@ -19,4 +19,5 @@ RailsComposerApp2::Application.routes.draw do
   get "home/index_static"
   get "home/like_view"
   match "us" => "home#us"
+  match "chrome" => "home#chrome"
 end

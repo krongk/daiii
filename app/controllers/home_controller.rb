@@ -21,6 +21,8 @@ class HomeController < ApplicationController
 
   def us
   end
+  def chrome
+  end
 
   def modal_window
      #	sleep 2 #development only, simulates wait time
