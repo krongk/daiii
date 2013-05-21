@@ -17,9 +17,3 @@ class SiteItem < ActiveRecord::Base
   end
   
 end
-
-
-acts_as_taggable_on :tags, :skills
-  scope :by_join_date, order("created_at DESC"
-
-    属性路 永陵路 阳西 迎宾 右 黄京剧  共 三太电子
