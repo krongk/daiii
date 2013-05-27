@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
   #http://railscasts.com/episodes/199-mobile-devices
   before_filter :prepare_for_mobile
 
+  #overwrite the devise default root path
+  def after_sign_in_path_for(resource)
+    "/dashboard/index"
+  end
+
 	private
 
 	def mobile_device?
