@@ -9,13 +9,12 @@ RailsComposerApp2::Application.routes.draw do
 
   resources :site_cates
 
+  devise_for :users
+  resources :users
 
   authenticated :user do
     root :to => 'dashboard#index'
   end
-  root :to => "home#index"
-  devise_for :users
-  resources :users
 
   get "home/modal_window"
   get "home/like_view"
@@ -24,4 +23,6 @@ RailsComposerApp2::Application.routes.draw do
   match "add_quote" => "home#add_quote"
   match "quote_added" => "home#quote_added"
   match "chrome" => "home#chrome"
+
+  root :to => "home#index"
 end
