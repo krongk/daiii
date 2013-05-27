@@ -1,27 +1,41 @@
+#encoding: utf-8
 class HomeController < ApplicationController
-  caches_page :us
-  caches_action :index_static
+  caches_page :index, :us, :chrome
+  layout 'application_static'
   def index
-    unless current_user
-      render "index_static", :layout => 'application_static'
-      return 
-    end
-
-    cate_id = params[:cate_id].to_i if params[:cate_id]
-    if cate_id
-      @site_items = SiteItem.where(:user_id => current_user.id, :site_cate_id => cate_id).order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 100)
-    else
-      @site_items = SiteItem.where(:user_id => current_user.id).order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 100)
-    end
   end
-
-  def index_static
-    render "index_static", :layout => 'application_static'
-  end
-
   def us
   end
+
   def chrome
+  end
+
+  def add_quote
+    #params =>{"quote"=>{"content"=>"雨服务", "creator"=>"", "title"=>"雨服务", "tag_names"=>"电子书 故事", "url"=>"http://localhost:3000/chrome"}, "action"=>"add_quote", "controller"=>"home"}
+    unless current_user
+      redirect_to "/users/sign_in", notice: "你还没有登录，请先登录。"
+      return
+    end
+    @item = SiteItem.new(:user_id => current_user.id)
+    @item.note = params[:quote][:content]
+    @item.site_url = params[:quote][:url]
+    @item.site_title = params[:quote][:title]
+    tag_str = params[:quote][:tag_names]
+    tag_str = tag_str.gsub(/ |，|。|、|；/, ' ') unless tag_str.blank?
+    @item.tag_list = tag_str.gsub(/\s+/, ',') unless tag_str.blank?
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to "/quote_added?item_id=#{@item.id}", notice: '添加成功.' }
+        format.json { render json: @item, status: :created, location: @item }
+      else
+        format.html { render action: "/add_quote" }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def quote_added
+    @item = SiteItem.find(params[:item_id])
   end
 
   def modal_window

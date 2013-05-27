@@ -1,0 +1,29 @@
+<% if @site_items.empty? %>
+  <div class="alert alert-info">
+    <a class="close" data-dismiss="alert">×</a>
+    <div id="flash_notice">
+      <p>你好，你还没有添加任务网址哦。 你可以通过以下步骤实现：</p>
+      <ul>
+        <li>
+          添加分类, 点击导航：
+          <%= link_to image_tag("/assets/blue/plus.png", :width => 42), new_site_cate_path, :title => "添加分类", data: { toggle: "modal", target: "#ajax-modal" } %>
+        </li>
+        <li>
+          添加网址, 点击导航：
+          <%= link_to image_tag("/assets/blue/go.png", :width => 42), new_site_item_path, :title => "添加网址", data: { toggle: "modal", target: "#ajax-modal" } %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% unless user_signed_in? %>
+  not login?
+<% else %>
+  <% if current_user.like_view == 'grid' %>
+    <%= render :partial => "home/gallery" %>
+  <% else %>
+    <%= render :partial => "home/list" %>
+  <% end %>
+  <%= will_paginate @site_items %>
+<% end %>

@@ -51,15 +51,15 @@ function style_css() {
     e.styleSheet ? e.styleSheet.cssText = t : e.appendChild(document.createTextNode(t)), data.body.appendChild(e)
 }
 function render_html() {
-    html = document.createElement("div"), html.id = "_" + window.random_number + "overlay", inner_html = data.html.replace(/id="_/g, 'id="_' + window.random_number), data.installingButton ? (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />Great job&mdash;clicking &ldquo;Quote It&rdquo; brings up this panel on any website."), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "Categorise your quote by typing #inspirational here"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "SAVE QUOTE AND CONTINUE"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "Tip: You can also press [Enter] to save your quote.")) : data.requoting ? (inner_html = inner_html.replace(/TAGS_VALUE/g, window.requote_tags), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />Tag your requote with a few topics, separated by spaces:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "E.g. #design #funny #inspirational #poetry #startups #tech"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "REQUOTE"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "")) : (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />Tag your quote with a few topics, separated by spaces:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "E.g. #design #funny #inspirational #poetry #startups #tech"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "SAVE QUOTE"), data.highlighted == 1 ? inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "Tip: You can also press [Enter] to save your quote.") : inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "Tip: Try highlighting text to quote something specific.")), html.innerHTML = inner_html, data.body.appendChild(html)
+    html = document.createElement("div"), html.id = "_" + window.random_number + "overlay", inner_html = data.html.replace(/id="_/g, 'id="_' + window.random_number), data.installingButton ? (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />&mdash;点击书签 &ldquo;+雨+&rdquo; 就可以在任何页面弹出该窗口."), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "给你要引用的文字和网站添加标签"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "保存并继续"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以直接按回车来保存.")) : data.requoting ? (inner_html = inner_html.replace(/TAGS_VALUE/g, window.requote_tags), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />给你要引用的文字或网页添加标签，以空格隔开:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "例如：创业 编程 互联网 Ruby Rails Web Design"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "REQUOTE"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "")) : (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />给你要引用的文字或网页添加标签，以空格隔开:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "例如： 电子商务 设计 网站 精彩 Design Funny"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "保存本次引用"), data.highlighted == 1 ? inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以直接按回车键来保存.") : inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以选中精彩的文字片段并点+雨+保存下来.")), html.innerHTML = inner_html, data.body.appendChild(html)
 }
 function bind_handlers() {
     listen(element("tags"), "change", format), listen(element("tags"), "keyup", format), listen(element("form"), "submit", submit), listen(element("cancel"), "click", close), listen(window, "keyup", esc)
 }
 function format(e) {
-    e.preventDefault();
-    var t = element("tags").value;
-    t != "" && t[0] != "#" && (t = "#" + t), t = t.replace(/[^\w\u4e00-\u9eff#,; ]/g, ""), t = t.replace(/#?(\w+)/g, "#$1"), t != element("tags").value && (element("tags").value = t)
+   // e.preventDefault();
+   // var t = element("tags").value;
+   // t != "" && t[0] != "#" && (t = "#" + t), t = t.replace(/[^\w\u4e00-\u9eff#,; ]/g, ""), t = t.replace(/#?(\w+)/g, "#$1"), t != element("tags").value && (element("tags").value = t)
 }
 function submit(e) {
     e.preventDefault();
@@ -67,7 +67,7 @@ function submit(e) {
     data.requoting ? (t.requote_id = window.requote_id, t.tag_names = encodeURIComponent(element("tags").value)) : (t.content = encodeURIComponent(data.quote), t.creator = encodeURIComponent(data.creator), t.title = encodeURIComponent(document.title), t.tag_names = encodeURIComponent(element("tags").value), t.url = encodeURIComponent(document.URL), t.url = t.url.charAt(253) == "%" ? t.url.substring(0, 253) : t.url.charAt(254) == "%" ? t.url.substring(0, 254) : t.url);
     var n = [];
     for (var r in t) n.push("quote[" + r + "]=" + t[r]);
-    window.open("http://localhost:3000/us?" + n.join("&"), "雨服务", "target=_blank,width=640,height=320"), close(e)
+    window.open("http://localhost:3000/add_quote?" + n.join("&"), "雨服务", "target=_blank,width=550,height=500"), close(e)
 }
 function close(e) {
     e.preventDefault(), window.closing = !0, window.addEventListener ? window.removeEventListener("keyup", esc) : window.attachEvent && window.detachEvent("keyup", esc), height = window.innerHeight ? window.innerHeight : document.documentElement && document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight, start_time = (new Date).getTime(), clearInterval(timer), timer = setInterval(slideOut, 10)
@@ -100,4 +100,4 @@ if (data.body) {
             start_time = null;
         data.creator = creator(), data.quote = quote(), window.random_number = Math.floor(Math.random() * 99999999), data.installingButton && document.getElementById("link_to_step3").parentNode.className == "disabled" && !data.highlighted ? (alert('Highlight the quote before clicking the "Quote It" button you installed in Step 2.'), window.quoting = !1) : data.installingButton && document.getElementById("link_to_step3").parentNode.className != "disabled" ? (alert("Please continue to Step 3."), window.quoting = !1) : no_quote() ? (alert("Sorry, quoting is not allowed from this domain. Please contact the owner with any questions. Thanks for visiting!"), window.quoting = !1) : (style_css(), render_html(), bind_handlers(), start_time = (new Date).getTime(), clearInterval(timer), timer = setInterval(slideIn, 20), element("tags").focus())
     }
-} else alert("Sorry, can't quote from non-HTML pages.");
+} else alert("对不起，网站不能保存非HTML格式的网页.");

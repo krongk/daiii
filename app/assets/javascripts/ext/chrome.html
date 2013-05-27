@@ -1,0 +1,12 @@
+<div id="_container"><div id="_header">
+<a id="_logo" href="http://www.yufuwu.cn" target="_blank"></a>
+<a id="_cancel" href="#">取消</a></div>
+<p>MESSAGE_PLACEHOLDER</p>
+<form id="_form" name="form" method="post">
+    <input id="_tags" type="text" name="quote[tag_names]" value="TAGS_VALUE" maxlength="100" placeholder="TAGS_PLACEHOLDER" autocomplete="off">
+    <div id="_buttons"><input id="_submit" type="submit" value="SUBMIT_PLACEHOLDER"></div>
+</form>
+<div id="_tip">TIP_PLACEHOLDER</div>
+</div>
+
+html = document.createElement("div"), html.id = "_" + window.random_number + "overlay", inner_html = data.html.replace(/id="_/g, 'id="_' + window.random_number), data.installingButton ? (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />&mdash;点击书签 &ldquo;+雨+&rdquo; 就可以在任何页面弹出该窗口."), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "给你要引用的文字和网站添加标签"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "保存并继续"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以直接按回车来保存.")) : data.requoting ? (inner_html = inner_html.replace(/TAGS_VALUE/g, window.requote_tags), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />给你要引用的文字或网页添加标签，以空格隔开:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "例如：创业 编程 互联网 Ruby Rails Web Design"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "REQUOTE"), inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "")) : (inner_html = inner_html.replace(/TAGS_VALUE/g, ""), inner_html = inner_html.replace(/MESSAGE_PLACEHOLDER/g, "&nbsp;<br />给你要引用的文字或网页添加标签，以空格隔开:"), inner_html = inner_html.replace(/TAGS_PLACEHOLDER/g, "例如： 电子商务 设计 网站 精彩 Design Funny"), inner_html = inner_html.replace(/SUBMIT_PLACEHOLDER/g, "保存本次引用"), data.highlighted == 1 ? inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以直接按回车键来保存.") : inner_html = inner_html.replace(/TIP_PLACEHOLDER/g, "提示: 你可以选中精彩的文字片段并点+雨+保存下来.")), html.innerHTML = inner_html, data.body.appendChild(html)

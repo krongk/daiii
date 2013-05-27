@@ -1,0 +1,14 @@
+<div class="well">
+  <b><%= @item.site_url %></b>
+  <p><%= @item.note %></p>
+</div>
+
+<div class="text-center">
+  <a href="javascript:closeWindow();" class="btn btn-large">关闭窗口</a>
+</div>
+<script   language="javascript"   type="text/javascript">  
+  function closeWindow(){  
+    window.open('','_parent','');  
+    window.close();   
+  }
+</script>    

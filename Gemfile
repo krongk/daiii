@@ -1,6 +1,7 @@
 #This application was generated with the rails_apps_composer gem:
 #https://github.com/RailsApps/rails_apps_composer
-source 'http://rubygems.org'
+#source 'http://rubygems.org'
+source 'http://ruby.taobao.org/'
 gem 'rails', '3.2.12'
 gem 'mysql2'
 group :assets do
