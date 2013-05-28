@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   layout 'application_static'
   def index
   end
+
   def us
   end
 

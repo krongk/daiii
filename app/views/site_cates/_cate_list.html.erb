@@ -1,10 +1,13 @@
-
+<!-- 
 <div id="side_nav" data-spy="affix" data-offset-top="500">
-	<ul class="nav nav-tabs nav-stacked">
+	<ul class="nav nav-tabs nav-stacked"> -->
+<div id="side_nav">
+  <ul class="nav nav-tabs">
 		<li <% unless params[:cate_id] -%>class="active" <% end -%>><a href="/">全部</a></li>
 		<% current_user.site_cates.each do |item| %>
 			<li <% if params[:cate_id].to_i == item.id -%>class="active" <% end -%>><%= link_to item.name, :controller=> :home, :action => :index, :cate_id => item.id %></li>
 		<% end %>
+    <%=render :file => "site_items/tags" %>
 	</ul>
 </div>
 

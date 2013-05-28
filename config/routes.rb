@@ -5,7 +5,11 @@ RailsComposerApp2::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :site_items
+  resources :site_items do
+    collection do
+      get :tag
+    end
+  end
 
   resources :site_cates
 
@@ -23,6 +27,7 @@ RailsComposerApp2::Application.routes.draw do
   match "add_quote" => "home#add_quote"
   match "quote_added" => "home#quote_added"
   match "chrome" => "home#chrome"
+  match "tags" => "site_items#tags"
 
   root :to => "home#index"
 end

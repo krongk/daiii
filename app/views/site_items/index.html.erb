@@ -1,20 +1,10 @@
-<h1>网站列表</h1>
-
-<table border='1'>
-<% @site_items.each do |site_item| %>
-  <tr>
-    <td><%= site_item.site_url %></td>
-    <td><%= site_item.site_title %></td>
-    <td><%= site_item.site_username %></td>
-    <td><%= site_item.site_password %></td>
-    <td><%= site_item.site_password_tips %></td>
-    <td><%= link_to '详细', site_item_path(site_item) %></td>
-    <td><%= link_to '修改', edit_site_item_path(site_item) %></td>
-    <td><%= link_to '删除', site_item, method: :delete, data: { confirm: '确定删除?' } %></td>
-  </tr>
+<% unless user_signed_in? %>
+  not login?
+<% else %>
+  <% if current_user.like_view == 'grid' %>
+    <%= render :partial => "home/gallery" %>
+  <% else %>
+    <%= render :partial => "home/list" %>
+  <% end %>
+  <%#= will_paginate @site_items %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to '添加', new_site_item_path %>

@@ -4,11 +4,21 @@ class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
   include HomeHelper
 
-  layout false
+  layout 'application', :only => [:index]
 
   caches_action :index
   caches_action :show
   
+  def tags
+    @tags = SiteItem.tag_counts_on(:tags)
+  end
+
+  def tag
+    @site_items = SiteItem.tagged_with(params[:id])
+    @tags = SiteItem.tag_counts_on(:tags)
+    render :action => 'index'
+  end
+
   # GET /site_items
   # GET /site_items.json
   def index
