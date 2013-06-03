@@ -28,6 +28,7 @@ zh-CN:
         site_password: '网站用密码'
         site_password_tips: '密码提示'
         note: '备注'
+        tag_list: '标签 '
         visit_count: '访问次数'
         rate_count: '评级数'
     hints:

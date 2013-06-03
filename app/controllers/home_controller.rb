@@ -1,7 +1,10 @@
 #encoding: utf-8
 class HomeController < ApplicationController
   caches_page :index, :us, :chrome
+  cache_sweeper :home_sweeper
+
   layout 'application_static'
+
   def index
   end
 

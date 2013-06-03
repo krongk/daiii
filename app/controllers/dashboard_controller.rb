@@ -6,6 +6,6 @@ class DashboardController < ApplicationController
     else
       @site_items = SiteItem.where(:user_id => current_user.id).order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 100)
     end
-    @tags = SiteItem.tag_counts_on(:tags)
+    @tags = current_user.site_items.tag_counts_on(:tags)
   end
 end

@@ -1,3 +1,5 @@
-<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-  <li><%= link_to tag.name, {:controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %></li>
+<% if @tags && @tags.any? %>
+	<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+	  <li><%= link_to tag.name, {:controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %></li>
+	<% end %>
 <% end %>

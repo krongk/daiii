@@ -10,12 +10,12 @@ class SiteItemsController < ApplicationController
   caches_action :show
   
   def tags
-    @tags = SiteItem.tag_counts_on(:tags)
+    @tags = current_user.site_items.tag_counts_on(:tags)
   end
 
   def tag
-    @site_items = SiteItem.tagged_with(params[:id])
-    @tags = SiteItem.tag_counts_on(:tags)
+    @site_items = current_user.site_items.tagged_with(params[:id])
+    @tags = current_user.site_items.tag_counts_on(:tags)
     render :action => 'index'
   end
 
@@ -23,7 +23,7 @@ class SiteItemsController < ApplicationController
   # GET /site_items.json
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @site_items = SiteItem.all
+    @site_items = current_user.site_items
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,11 @@ class SiteItemsController < ApplicationController
     @site_item.site_url = get_site_url(@site_item)
     @site_item.site_title ||= get_site_title_from_url(@site_item.site_url)
     @site_item.site_title = @site_item.site_title.gsub(/^http(?:s)?\:\/\//, '').gsub(/www\./, '') unless @site_item.site_title.blank?
+    
+    tag_str = params[:site_item][:tag_list]
+    tag_str = tag_str.gsub(/ |，|。|、|；/, ' ') unless tag_str.blank?
+    @site_item.tag_list = tag_str.gsub(/\s+/, ',') unless tag_str.blank?
+
     respond_to do |format|
       if @site_item.save
         #sidekiq not work on Windows
