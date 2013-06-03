@@ -5,7 +5,7 @@ class HomeSweeper < ActionController::Caching::Sweeper
     # expire_news_item news_items_path
     # expire_news_item news_item_path(news_item)
     # expire_news_item "/"
-    FileUtils.rm_rf "#{home_cache_directory}/index.html"
+    FileUtils.rm_rf File.join(Rails.root, 'public', 'index.html') #"#{home_cache_directory}/index.html"
   end
   alias_method :after_create, :sweep
   alias_method :after_update, :sweep
