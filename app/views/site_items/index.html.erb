@@ -1,10 +1,7 @@
-<% unless user_signed_in? %>
-  not login?
-<% else %>
-  <% if current_user.like_view == 'grid' %>
-    <%= render :partial => "home/gallery" %>
-  <% else %>
-    <%= render :partial => "home/list" %>
+<ul>
+  <% @site_items.each do |site_item| %>
+    <li><%= render :partial => "site_items/show", :locals => {:site_item => site_item} %></li>
   <% end %>
-  <%#= will_paginate @site_items %>
-<% end %>
+</ul>
+
+<%#= will_paginate @site_items %>

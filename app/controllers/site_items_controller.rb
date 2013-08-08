@@ -4,8 +4,6 @@ class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
   include HomeHelper
 
-  layout 'application', :only => [:index]
-
   caches_action :index
   caches_action :show
   

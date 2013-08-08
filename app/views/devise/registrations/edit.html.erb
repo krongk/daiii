@@ -1,4 +1,8 @@
-<h2>修改信息 <%#= resource_name.to_s.humanize %></h2>
+<% #fit for render on /setting
+ resource ||= current_user
+ resource_name ||= :user
+%>
+<h3>修改密码及名称</h3>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
@@ -9,6 +13,6 @@
   <%= f.input :current_password, :hint => "请输入你当前使用的密码", :required => true %>
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>
-<h3>注销登录</h3>
-<p>不喜欢? <%= link_to "注销账户", registration_path(resource_name), :data => { :confirm => "确认?" }, :method => :delete %>.</p>
-<%= link_to "返回", :back %>
+
+<hr/>
+<p>不喜欢使用此账户了? &nbsp;&nbsp; <%= link_to "注销账户", registration_path(resource_name), :data => { :confirm => "确认?" }, :method => :delete %>&nbsp;&nbsp;<i>(*此操作不可撤销。请慎重考虑！)</i></p>

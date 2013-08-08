@@ -1,0 +1,7 @@
+<% site_items = current_user.site_items.tagged_with(tag_name) %>
+
+<table class="table table-striped table-hover">
+  <% site_items.each do |site_item| %>
+    <tr><%= render :partial => "site_items/show", :locals => {:site_item => site_item} %></tr>
+  <% end %>
+</table>

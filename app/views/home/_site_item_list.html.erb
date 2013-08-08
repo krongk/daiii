@@ -1,21 +1,17 @@
 <div id="public_share">
-	<ul>
 	<% @site_items.each do |item| %>
-	  <li>
-	  <div class="row-fluid">
-	  	<div class="span3" >
-				<h3><%= item.user.name if item.user %></h3>
-				<hr>
-
-			</div>
-			<div class="span9">
-				<p class="note"><%= item.note.truncate(85) %></p>
-				<i><%= distance_of_time_in_words(item.updated_at, Time.now)%>前摘自：<%=link_to item.site_title.truncate(20), item.site_url %></i>
-			</div>
-		</div>
-		</li>
+	  <dl class="dl-horizontal">
+		  <dt><%= link_to item.user.name, "/public_share?u=#{item.user.id}"%></dt>
+		  <dd>
+		  	<i><%= distance_of_time_in_words(item.updated_at, Time.now)%>前摘自：</i>
+		  	<abbr title="<%= item.site_title%>"><%=link_to item.site_title.truncate(30), item.site_url, :target => "_blank" %></abbr>
+		  	<blockquote>
+		    	<p><%= item.note.truncate(200) %></p>
+		    </blockquote>
+		  </dd>
+	  </dl>
 	<% end %>
-	</ul>
+
 	<%#will paginate is not displayed by css %>
 	<%=will_paginate @site_items, :page_links => true%>
 </div>

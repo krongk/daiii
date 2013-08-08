@@ -10,25 +10,24 @@ RailsComposerApp2::Application.routes.draw do
     end
   end
 
-  resources :site_cates
-
   devise_for :users
   resources :users
 
-  
-
   get "home/modal_window"
-  get "home/like_view"
-  get "dashboard/index"
+  get "home/index"
+  get "home/index_static"
   match "us" => "home#us"
-  match "add_quote" => "home#add_quote"
+  match "s" => "home#setting"
+  match "add_quote" => "home#add_quote", :via => [:post]
   match "quote_added" => "home#quote_added"
+  match "h" => "home#help"
   match "chrome" => "home#chrome"
+  match "home" => "home#index"
   match "public_share" => "home#public_share"
   match "tags" => "site_items#tags"
 
-  root :to => "home#index"
+  root :to => "home#index_static"
   authenticated :user do
-    root :to => 'dashboard#index'
+    root :to => 'home#index'
   end
 end

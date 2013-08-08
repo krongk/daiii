@@ -3,17 +3,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Language" content="zh-CN" />
-    <meta name="robots" content="all" />
-    <meta name="author" content="inruby.com" />
     <meta name="robots" content="INDEX,FOLLOW" />
     <meta name="author" content="master@inruby.com" />
     <link type="text/plain" rel="author" href="http://www.yufuwu.org/humans.txt" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "雨服务" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Railscomposerapp2" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "雨服务" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <!--[if IE 7]>
+    <!--[if IE]>
       <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
       <link rel="stylesheet" href="assets/ie.css">
     <![endif]-->
@@ -23,41 +21,17 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body>
 
-  <div class="container">  
-    <div class="navbar navbar-fixed-top"> 
-      <div class="container header"> 
-        <a class="logo1" href="/public_share"><%=image_tag asset_path("blue/rain.png"), :width => 48, :title => "首页" %></a>
-        <%= render 'layouts/navigation' %>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div id="main" role="main">
-    <div class="container">
-      <div class="content">
-        <% if mobile_device? %>
-          <%= render 'site_cates/cate_list' %>    
-          <%= render 'layouts/messages' %> 
-          <%= yield %>
-        <% else %>
+<div id="ie-container" class="container-narrow">
+  <%= render 'layouts/header' %>
 
-         <div class="row-fluid">
-          <div class="span12">
-            <%= render 'site_cates/cate_list' %>  
+  <hr>
 
-            <%= render 'layouts/messages' %> 
-            <%= yield %>
-          </div>
-         </div>
-        <% end %>
-      </div>
-    </div> <!--! end of .container -->
-  </div> <!--! end of #main -->
-
-  <%#=render 'layouts/footer' %>
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</div>
+  <%=render 'layouts/footer' %>
   <%= render 'layouts/modal' %>
   <!--[if lte IE 6]>
     <script type="text/javascript" src="assets/bootstrap-ie.js"></script>

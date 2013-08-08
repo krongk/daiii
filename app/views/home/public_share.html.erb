@@ -1,6 +1,8 @@
 <%=render :partial => 'site_item_list' %>
 
-<span id="loading-holder"></span>
-<% if @site_items.size > 5%>
-  <a id="pagination_ajax_title" href="javascript: void(0);">点击获取更多餐厅信息...</a>
-<% end %>
+<div class="text-right">
+	<span id="loading-holder"></span>
+	<% if @site_items.size > 5%>
+	  <a id="pagination_ajax_title" class="btn btn-info" href="javascript: void(0);">点击获取更多...</a>
+	<% end %>
+</div>

@@ -1,14 +1,25 @@
-<h3>用户管理</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class="tabbable tabs-left">
+  <% index = 0 %>
+  <ul class="nav nav-tabs">
+		<% if @tags && @tags.any? %>
+			<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+			  <li class="<%=index == 0 ? 'active' : ''%>"><a href="#r<%=index%>" data-toggle="tab"><%= tag.name%></a>
+			  <%#= link_to tag.name, {:controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %></li>
+			  <% index += 1 %>
+			<% end %>
+		<% end %>
+  </ul>
 
-<table class="table table-striped">
-<% @user.site_cates.each do |cate| %>
- <tr><td><b><%=cate.name %></b></td></tr>
- <% cate.site_items.each do |item| %>
- 	<tr><td>
- 		<%=link_to item.site_title, item.site_url, :target => "_blank" %>
- 	</td></tr>
- <% end %>
-<% end %>
-</table>
+  <% index = 0 %>
+  <div class="tab-content">
+    <% if @tags && @tags.any? %>
+			<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+			  <div class="tab-pane <%=index == 0 ? 'active' : ''%>" id="r<%=index%>">
+		      <%#= link_to tag.name, {:controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %>
+		      <%=render  :partial => "/site_items/tag", :locals => {:tag_name => tag.name} %>
+		    </div>
+		    <% index += 1 %>
+			<% end %>
+		<% end %>
+  </div>
+</div>

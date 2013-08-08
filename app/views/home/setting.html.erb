@@ -1,0 +1,20 @@
+<div class="tabbable tabs-right">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#rA" data-toggle="tab">修改密码及名称</a></li>
+    <li class=""><a href="#rB" data-toggle="tab">隐私设置</a></li>
+    <li class=""><a href="#rC" data-toggle="tab">意见建议</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="rA">
+      <%= render file: "devise/registrations/edit" %>
+    </div>
+    <div class="tab-pane" id="rB">
+      <p>网站默认您收藏的信息是不公开的.</p>
+    </div>
+    <div class="tab-pane" id="rC">
+      <p>如果您有什么更好的意见或建议，请通过以下方式联系我：</p>
+      QQ: 77632132 <br>
+      Email: master@inruby.com
+    </div>
+  </div>
+</div>

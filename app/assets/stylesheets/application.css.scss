@@ -1,18 +1,186 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- * require_tree .
- *#= require_self
- 
+ *= require_self
  *= require bootstrap_and_overrides
  *= require bootstrap-modal
  *= require _font-awesome
- *= require home
-
 */
+
+$link_color: #25a0d4;
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+
+h1, h2, h3{
+  color: #25a0d4;
+}
+.blue{
+  color: #25a0d4;
+}
+
+.logo{
+	color: #25a0d4;
+	font-size: 200%;
+	font-family: "微软雅黑";
+	padding: 10px;
+	padding-left: 60px;
+	background-image: url("/assets/blue/rain.png");
+	background-repeat: no-repeat;
+	background-position: 1px 2px;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/****footer***/
+footer .content{
+  color: #999;
+}
+
+/********install quote bookmark bar guide style begin**********/
+#chrome {
+  margin: 0 auto;
+  width: 500px;
+  height: 224px;
+  background: url(/assets/chrome.png) no-repeat;
+}
+#chrome_installed {
+  margin: 0 auto;
+  width: 500px;
+  height: 224px;
+  background: url(/assets/chrome-installed.png) no-repeat;
+}
+
+.key {
+  display: inline-block;
+  padding: 3px 5px 0 5px;
+  color: #999999;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.76190em;
+  font-weight: bold;
+  line-height: 1.2em;
+  background-color: #f4f4f4;
+  border-color: #dddddd #999999 #999999 #dddddd;
+  border-style: solid;
+  border-width: 3px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -khtml-box-shadow: 0 0 10px #dddddd inset;
+  -moz-box-shadow: 0 0 10px #dddddd inset;
+  -ms-box-shadow: 0 0 10px #dddddd inset;
+  -o-box-shadow: 0 0 10px #dddddd inset;
+  -webkit-box-shadow: 0 0 10px #dddddd inset;
+  box-shadow: 0 0 10px #dddddd inset;
+}
+
+.highlighted {
+  margin: 1.5em 0 3em 0;
+  padding: 16px;
+  color: #0099ff;
+  display: block;
+  font-family: adobe-caslon-pro, Georgia, serif;
+  font-size: 21px;
+  font-weight: normal;  
+  text-align: center;
+  line-height: 30px;
+  background-color: #e6f1f8;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#quoteredlet {
+  position: absolute;
+  top: 210px;
+  left: 730px;
+  cursor: move;
+  z-index: 100;
+  filter: Light;
+  padding: 10px 20px;
+}
+#arrow1 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 690px;
+  width: 92px;
+  height: 300px;
+  background: url(/assets/arrow1.png) no-repeat;
+  z-index: 10;
+}
+#arrow2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 700px;
+  width: 150px;
+  height: 450px;
+  background: url(/assets/arrow2.png) no-repeat;
+  z-index: 10;
+}
+
+#installation_check{
+  display: none;
+  text-align: center;
+  width: auto;
+}
+/********install guide style end**********/
+
+
+/*******public_share***********/
+#public_share ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+#public_share .pagination{
+  display: none;
+  visibility: none;
+}
+
+/*******tag***********/
+.tag{
+  margin: 10px;
+  padding: 4px;
+  color: #fff;
+}
+.tag a{
+  color: #fff;
+}

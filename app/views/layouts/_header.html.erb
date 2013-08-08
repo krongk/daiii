@@ -1,0 +1,24 @@
+<div class="masthead">
+  <ul class="nav nav-pills pull-right">
+    <% if user_signed_in? %>
+     <li><%= link_to image_tag(asset_path("blue/home.png"), :width => 42), "/", :title => "首页" %></li>
+     <li><%= link_to image_tag(asset_path("blue/user.png"), :width => 42), user_path(current_user), :title => "个人主页" %></li>
+     <li><%= link_to image_tag(asset_path("blue/setting.png"), :width => 42), '/s', :title => "个人设置" %></li>
+     <% if current_user.has_role? :admin %>
+      <li><%= link_to image_tag(asset_path("blue/book.png"), :width => 42), users_path, :title => "用户管理"%></li>
+     <% end %>
+     <li><%= link_to image_tag(asset_path("blue/go.png"), :width => 42), "/public_share", :title => "广场"%></li>
+     <li><%= link_to image_tag(asset_path("blue/help.png"), :width => 42), "/us", :title => "联系我们"%></li>
+     <li><%= link_to image_tag(asset_path("blue/exist.png"), :width => 42), destroy_user_session_path,  :method=>'delete', :title => "退出"%></li>
+    <% else %>
+      <li>
+        <%= link_to "登录", "/home/modal_window", data: { toggle: "modal", target: "#ajax-modal" } %>
+      </li>
+      <li><%= link_to '注册', new_user_registration_path %></li>
+      <li><%= link_to '广场', "/public_share" %></li>
+      <li><%= link_to '联系我们', "/us" %></li>
+    <% end %>
+    
+  </ul>
+  <h3 class="muted logo"><span class="blue">雨服务</span></h3>
+</div>

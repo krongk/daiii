@@ -2,7 +2,6 @@ class CreateSiteItems < ActiveRecord::Migration
   def change
     create_table :site_items do |t|
       t.references :user
-      t.references :site_cate
       t.string :site_url
       t.string :site_title
       t.string :site_username

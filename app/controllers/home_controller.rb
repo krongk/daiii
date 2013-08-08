@@ -3,18 +3,28 @@ class HomeController < ApplicationController
   caches_page :index, :us, :chrome
   cache_sweeper :home_sweeper
 
-  layout 'application_static'
-
   def index
-    if user_signed_in?
-      return redirect_to "/public_share"
-    end
+    @tags = current_user.site_items.tag_counts_on(:tags)
+  end
+
+  def index_static
+    redirect_to "/home" if user_signed_in?
   end
 
   def us
   end
 
+  def setting
+  end
+
+  def help
+  end
+  
   def chrome
+  end
+
+  def public_share
+    @site_items = SiteItem.where(params[:u] ? ["user_id = ?", params[:u]] : true).paginate(:per_page => 10, :page => params[:page] || 1).order("updated_at DESC")
   end
 
   def add_quote
@@ -28,7 +38,7 @@ class HomeController < ApplicationController
     @item.site_url = params[:quote][:url]
     @item.site_title = params[:quote][:title]
     tag_str = params[:quote][:tag_names]
-    tag_str = tag_str.gsub(/ |，|。|、|；/, ' ') unless tag_str.blank?
+    tag_str = tag_str.gsub(/，|。|、|；/, ' ') unless tag_str.blank?
     @item.tag_list = tag_str.gsub(/\s+/, ',') unless tag_str.blank?
     respond_to do |format|
       if @item.save
@@ -52,19 +62,5 @@ class HomeController < ApplicationController
 	    format.js
 	  end
   end
-
-  def like_view
-    return if current_user.nil?
-    if params[:like] == 'grid'
-      current_user.like_view = 'grid'
-    else
-      current_user.like_view = 'list'
-    end
-    current_user.save!
-    redirect_to '/'
-  end
-
-  def public_share
-    @site_items = SiteItem.paginate(:per_page => 10, :page => params[:page] || 1).order("updated_at DESC")
-  end
+  
 end

@@ -1,6 +1,0 @@
-<%= render :partial => "home/gallery", :locals => {:site_cate => @site_cate, :index_page => false} %>
-
-<%= will_paginate  @site_items %>
-<%= link_to "添加网址", new_site_item_path, data: { toggle: "modal", target: "#ajax-modal" } %> | 
-<%= link_to '编辑分类', edit_site_cate_path(@site_cate) %> |
-<%= link_to '返回', root_path %>
