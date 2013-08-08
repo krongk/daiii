@@ -56,7 +56,7 @@ gem 'acts-as-taggable-on'
 
 #===Pagination
 	#debug: ActiveAdmin undefined local variable or method `per', so must down will_paginate '3.0.2' to '3.0.pre2'
-	# gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git'
+	 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git'
 	# the will_patinate I18n is here: https://github.com/tigrish/will-paginate-i18n
 	#gem "will_paginate", "3.0.pre2"
 

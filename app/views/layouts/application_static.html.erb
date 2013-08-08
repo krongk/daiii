@@ -27,10 +27,10 @@
   <div class="masthead">
     <ul class="nav nav-pills pull-right">
        <li>
-        <%= link_to "首页", "/" %>
+        <%= link_to "首页", "/dashboard/index" %>
        </li>
       <% if user_signed_in? %>
-       <li><%= link_to current_user.name, "/" %></li>
+       <li><%= link_to current_user.name, "/dashboard/index" %></li>
        <li><%= link_to "退出", destroy_user_session_path,  :method=>'delete', :title => "退出"%></li>
       <% else %>
         <li>
@@ -38,6 +38,7 @@
         </li>
         <li><%= link_to '注册', new_user_registration_path %></li>
       <% end %>
+      <li><a href="/public_share">广场</a></li>
       <li><a href="/us">联系</a></li>
     </ul>
     <h3 class="muted logo"><span class="blue">雨服务</span></h3>

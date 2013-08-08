@@ -6,6 +6,9 @@ class HomeController < ApplicationController
   layout 'application_static'
 
   def index
+    if user_signed_in?
+      return redirect_to "/public_share"
+    end
   end
 
   def us
@@ -59,5 +62,9 @@ class HomeController < ApplicationController
     end
     current_user.save!
     redirect_to '/'
+  end
+
+  def public_share
+    @site_items = SiteItem.paginate(:per_page => 10, :page => params[:page] || 1).order("updated_at DESC")
   end
 end

@@ -162,3 +162,22 @@ footer .content{
   width: auto;
 }
 /********install guide style end**********/
+
+
+#public_share .pagination{
+  display: none;
+  visibility: none;
+}
+#public_share li{
+  list-style-type: none;
+  margin: 10px 0;
+}
+#public_share li:hover{
+  background: #eee;
+}
+
+#public_share .note{
+  height: 50px;
+  line-height: 25px;
+  color: #0099ff;
+}

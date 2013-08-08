@@ -1,0 +1,9 @@
+$('#public_share').append('<%= j render(:partial => 'home/site_item_list', :public_share => @site_items) %>');
+<% if @site_items.next_page %>
+  $('#loading-holder').html("")
+  $('.pagination').replaceWith('<%= j will_paginate(@site_items) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+
+<%# sleep 2 %>
