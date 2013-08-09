@@ -3,8 +3,12 @@
   <ul class="nav nav-tabs">
 		<% if @tags && @tags.any? %>
 			<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-			  <li class="<%=index == 0 ? 'active' : ''%>"><a href="#r<%=index%>" data-toggle="tab"><%= tag.name%></a>
-			  <%#= link_to tag.name, {:controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %></li>
+			  <li class="<%=index == 0 ? 'active' : ''%>">
+			    <a href="#r<%=index%>" data-toggle="tab">
+			      <%= tag.name%>
+			      <span class="badge badge-<%=get_rand_css%>"><%=tag.count %></span>
+			    </a>
+				</li>
 			  <% index += 1 %>
 			<% end %>
 		<% end %>

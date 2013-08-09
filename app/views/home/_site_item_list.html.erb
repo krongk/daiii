@@ -4,9 +4,10 @@
 		  <dt><%= link_to item.user.name, "/public_share?u=#{item.user.id}"%></dt>
 		  <dd>
 		  	<i><%= distance_of_time_in_words(item.updated_at, Time.now)%>前摘自：</i>
-		  	<abbr title="<%= item.site_title%>"><%=link_to item.site_title.truncate(30), item.site_url, :target => "_blank" %></abbr>
+		  	<abbr title="<%= item.site_title%>"><%=link_to item.site_title.to_s.truncate(30), item.site_url, :target => "_blank" %></abbr>
 		  	<blockquote>
-		    	<p><%= item.note.truncate(200) %></p>
+		    	<p><%= item.note.truncate(200) unless item.note.blank?%></p>
+		    	<p><%= link_to item.site_url.to_s.truncate(50), item.site_url, :target => "_blank" %>
 		    </blockquote>
 		  </dd>
 	  </dl>

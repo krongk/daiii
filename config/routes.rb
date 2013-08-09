@@ -18,7 +18,7 @@ RailsComposerApp2::Application.routes.draw do
   get "home/index_static"
   match "us" => "home#us"
   match "s" => "home#setting"
-  match "add_quote" => "home#add_quote", :via => [:post]
+  match "add_quote" => "home#add_quote"
   match "quote_added" => "home#quote_added"
   match "h" => "home#help"
   match "chrome" => "home#chrome"

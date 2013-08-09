@@ -3,10 +3,9 @@ require 'site_util'
 class SiteItemsController < ApplicationController
   before_filter :authenticate_user!
   include HomeHelper
-
-  caches_action :index
-  caches_action :show
   
+  layout :nil, :only => [:show, :edit]
+
   def tags
     @tags = current_user.site_items.tag_counts_on(:tags)
   end
@@ -20,8 +19,8 @@ class SiteItemsController < ApplicationController
   # GET /site_items
   # GET /site_items.json
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @site_items = current_user.site_items
+    #authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    @site_items = current_user.site_items.paginate(:page => params[:page]||1, :per_page => 50)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,10 +31,13 @@ class SiteItemsController < ApplicationController
   # GET /site_items/1
   # GET /site_items/1.json
   def show
-    @site_item = SiteItem.find(params[:id])
-
+    @site_item = current_user.site_items.find_by_id(params[:id])
+    unless  @site_item
+      redirect_to user_path(current_user), :notice => "没有访问权限!"
+      return
+    end
     respond_to do |format|
-      format.html # show.html.erb
+      format.html 
       format.json { render json: @site_item }
     end
   end
@@ -54,7 +56,11 @@ class SiteItemsController < ApplicationController
 
   # GET /site_items/1/edit
   def edit
-    @site_item = SiteItem.find(params[:id])
+    @site_item = current_user.site_items.find_by_id(params[:id])
+    unless  @site_item
+      redirect_to user_path(current_user), :notice => "没有访问权限!"
+      return
+    end
   end
 
   # POST /site_items
@@ -95,8 +101,8 @@ class SiteItemsController < ApplicationController
 
     respond_to do |format|
       if @site_item.update_attributes(params[:site_item])
-        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url)
-        format.html { redirect_to root_path, notice: '网站添加成功.' }
+        FetchSiteIconWorker.perform_async(@site_item.id, @site_item.site_url) unless request.host == 'localhost'
+        format.html { redirect_to root_path, notice: '网站修改成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -108,7 +114,12 @@ class SiteItemsController < ApplicationController
   # DELETE /site_items/1
   # DELETE /site_items/1.json
   def destroy
-    @site_item = SiteItem.find(params[:id])
+    @site_item = current_user.site_items.find_by_id(params[:id])
+    unless  @site_item
+      redirect_to user_path(current_user), :notice => "没有访问权限!"
+      return
+    end
+
     @site_item.destroy
 
     respond_to do |format|

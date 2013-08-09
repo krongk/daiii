@@ -13,6 +13,10 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def get_rand_css
+    ['', 'success', 'warning', 'important', 'info', 'inverse'][rand(6)]
+  end
+  
   #flash动画显示
   # eg: play_flash("flash/top_banner.swf")
   # or: play_flash asset_path("flash/top_banner.swf"), :width => '985', :height => '249'
