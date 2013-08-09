@@ -11,8 +11,9 @@
           <span class="tag badge badge-info"><%= link_to tag.name, { :controller => :site_items, :action => :tag, :id => tag.name }, :class => css_class %></span>
        <% end %>
      <%else %>
-       没有任何内容，请参考“使用教程”。
+       <div class="alert alert-note">没有任何收藏，请参考“使用教程”。</div>
      <% end %>
+     <%= render :partial => 'site_items/simple_form' %>
     </div>
     <div class="tab-pane" id="rC">
       <%= render file: "home/help" %>

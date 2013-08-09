@@ -22,7 +22,6 @@ zh-CN:
     labels:
       site_item:
         site_title: '网站标题'
-        site_cate: '分类'
         site_url: '网站地址'
         site_username: '网站用户名'
         site_password: '网站用密码'

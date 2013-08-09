@@ -11,19 +11,12 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
-  has_many :site_cates
   has_many :site_items
 
   before_create :set_default_roles
-  after_create :create_site_cate
 
   private
   def set_default_roles
     self.roles = [Role.find_or_create_by_name('user')]
   end
-  
-  def create_site_cate
-    self.site_cates.create!(:name => "默认")
-  end
-
 end

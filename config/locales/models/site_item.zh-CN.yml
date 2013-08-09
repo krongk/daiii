@@ -5,7 +5,6 @@ zh-CN:
       site_item: Site item
     attributes:
       site_item:
-        site_cate: Site cate
         site_url: Site url
         site_title: Site title
         site_username: Site username

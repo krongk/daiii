@@ -1,12 +1,8 @@
-<div class="">
+<div class="well">
   <% @site_item ||= SiteItem.new %>
   <%= simple_form_for(@site_item) do |f| %>
-      <%#= f.select :site_cate, current_user.site_cates.map{|s| [s.name, s.id]}, :selected => params[:new_site_cate_id],  label: false %>
-      <%= collection_select(:site_item, :site_cate_id, current_user.site_cates, :id, :name, {:include_blank=> false}, {:class=>'field_shorter'}) %>
-      <%#= f.input_field :site_title, placeholder: "网页标题", require: false, class: 'field_shorter' %>
-      <%= f.input_field :site_url, placeholder: "网址链接：(直接拖曳到这里)" , class: 'field_longer' %>
-
-      <%= f.button :submit, "快速收藏", class: 'btn-success btn_upper' %>
-
+      <%= f.input :site_url, placeholder: "网址链接：(直接拖曳到这里)" %>
+      <%= f.input :tag_list, :placeholder => "给收藏分类" %>
+      <%= f.button :submit, "快速收藏", class: 'btn btn-success' %>
   <% end %>
 </div>
