@@ -23,6 +23,9 @@ class HomeController < ApplicationController
   def chrome
   end
 
+  def friend_link
+  end
+
   def public_share
     @site_items = SiteItem.where(params[:u] ? ["user_id = ?", params[:u]] : true).paginate(:per_page => 10, :page => params[:page] || 1).order("updated_at DESC")
   end

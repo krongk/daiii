@@ -23,6 +23,7 @@ RailsComposerApp2::Application.routes.draw do
   match "h" => "home#help"
   match "chrome" => "home#chrome"
   match "home" => "home#index"
+  match "friend_link" => "home#friend_link"
   match "public_share" => "home#public_share"
   match "tags" => "site_items#tags"
 
