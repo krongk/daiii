@@ -31,7 +31,7 @@ class HomeController < ApplicationController
   end
 
   def add_quote
-    #params =>{"quote"=>{"content"=>"雨服务", "creator"=>"", "title"=>"雨服务", "tag_names"=>"电子书 故事", "url"=>"http://localhost:3000/chrome"}, "action"=>"add_quote", "controller"=>"home"}
+    #params =>{"quote"=>{"content"=>"DaIII书签", "creator"=>"", "title"=>"DaIII书签", "tag_names"=>"电子书 故事", "url"=>"http://localhost:3000/chrome"}, "action"=>"add_quote", "controller"=>"home"}
     unless current_user
       redirect_to "/users/sign_in", notice: "你还没有登录，请先登录。"
       return
